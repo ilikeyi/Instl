@@ -32,10 +32,10 @@
   	- https://github.com/ilikeyi/Instl
 
   .用法
+   -Language "en-US"           | 指定语言
    -Config "D:\instl.json"     | 指定配置文件
    -App "Gpg4win", "Python"    | 从指定配置文件 instl.json 里获取应用程序，如果没有指定则自动从网站上下载配置文件
                                  可指定应用程序名、GUID 唯一识别符
-   -Language "en-US"           | 指定语言
 
 #>
 
@@ -49,10 +49,6 @@ param
 	$Config,
 	[string[]]$App
 )
-
-# 作者
-$Author  = "Yi"
-$AuthorURL = "https://fengyi.tel"
 
 <#
 	.Available servers
@@ -79,6 +75,7 @@ $Script:ServerListSelect = @()
 $Update_Server = @(
 	@{
 		Region = "en-US"
+		Name   = "English (United States)"
 		Link   = @(
 			"https://fengyi.tel/download/solutions/update/Instl/en-US/latest.json",
 			"https://github.com/ilikeyi/Instl/raw/main/update/en-US/latest.json"
@@ -86,6 +83,7 @@ $Update_Server = @(
 	}
 	@{
 		Region = "zh-CN"
+		Name   = "Chinese (Simplified, China)"
 		Link   = @(
 			"https://fengyi.tel/download/solutions/update/Instl/zh-CN/latest.json"
 			"https://github.com/ilikeyi/Instl/raw/main/update/zh-CN/latest.json"
@@ -93,6 +91,7 @@ $Update_Server = @(
 	}
 	@{
 		Region = "zh-TW"
+		Name   = "Chinese (Traditional, Taiwan)"
 		Link   = @(
 			"https://fengyi.tel/download/solutions/update/Instl/zh-TW/latest.json"
 			"https://github.com/ilikeyi/Instl/raw/main/update/zh-TW/latest.json"
@@ -100,6 +99,7 @@ $Update_Server = @(
 	}
 	@{
 		Region = "ja-JP"
+		Name   = "Japanese (Japan)"
 		Link   = @(
 			"https://fengyi.tel/download/solutions/update/Instl/ja-JP/latest.json"
 			"https://github.com/ilikeyi/Instl/raw/main/update/ja-JP/latest.json"
@@ -107,6 +107,7 @@ $Update_Server = @(
 	}
 	@{
 		Region = "ko-KR"
+		Name   = "Korean (Korea)"
 		Link   = @(
 			"https://fengyi.tel/download/solutions/update/Instl/ko-KR/latest.json"
 			"https://github.com/ilikeyi/Instl/raw/main/update/ko-KR/latest.json"
@@ -134,7 +135,9 @@ $Global:IsLang = ""
 $AvailableLanguages = @(
 	@{
 		Tag      = "en-US"
+		Name     = "English (United States)"
 		Language = @{
+			FontsUI                 = "Segoe UI"
 			Instl                   = "Software Installation"
 			Setting                 = "Set up"
 			Refresh                 = "Refresh"
@@ -161,8 +164,8 @@ $AvailableLanguages = @(
 			FileName                = "File name"
 			SaveTo                  = "Save to"
 			ItInstalled             = "Installed"
-			UpdateServeravailable   = "Status: available"
-			NotAvailable            = "Status: unavailable"
+			UpdateAvailable         = "Available"
+			UpdateUnavailable       = "Unavailable"
 			ExistingInstlPacker     = "Already compressed"
 			DownloadLinkError       = "The download address is invalid."
 			ErrorDown               = "An error occurred during the download"
@@ -201,7 +204,9 @@ $AvailableLanguages = @(
 	}
 	@{
 		Tag      = "de-DE"
+		Name     = "German (Germany)"
 		Language = @{
+			FontsUI                 = "Segoe UI"
 			Instl                   = "Software Installation"
 			Setting                 = "aufstellen"
 			Refresh                 = "erneuern"
@@ -228,8 +233,8 @@ $AvailableLanguages = @(
 			FileName                = "Dateiname"
 			SaveTo                  = "Speichern unter"
 			ItInstalled             = "Eingerichtet"
-			UpdateServeravailable   = "Status: verfügbar"
-			NotAvailable            = "Status: nicht verfügbar"
+			UpdateAvailable         = "Verfügbar"
+			UpdateUnavailable       = "Nicht verfügbar"
 			ExistingInstlPacker     = "Bereits komprimiert"
 			DownloadLinkError       = "Die Download-Adresse ist ungültig."
 			ErrorDown               = "Beim Download ist ein Fehler aufgetreten"
@@ -268,7 +273,9 @@ $AvailableLanguages = @(
 	}
 	@{
 		Tag      = "ja-JP"
+		Name     = "Japanese (Japan)"
 		Language = @{
+			FontsUI                 = "Yu Gothic UI"
 			Instl                   = "ソフトウェアのインストール"
 			Setting                 = "設定"
 			Refresh                 = "リフレッシュする"
@@ -295,8 +302,8 @@ $AvailableLanguages = @(
 			FileName                = "ファイル名"
 			SaveTo                  = "に保存"
 			ItInstalled             = "インストール済み"
-			UpdateServeravailable   = "ステータス: 利用可能"
-			NotAvailable            = "ステータス: 利用不可"
+			UpdateAvailable         = "利用可能"
+			UpdateUnavailable       = "利用不可"
 			ExistingInstlPacker     = "すでに圧縮されています"
 			DownloadLinkError       = "ダウンロードアドレスが無効です。"
 			ErrorDown               = "ダウンロード中にエラーが発生しました"
@@ -335,7 +342,9 @@ $AvailableLanguages = @(
 	}
 	@{
 		Tag      = "ko-KR"
+		Name     = "Korean (Korea)"
 		Language = @{
+			FontsUI                 = "Malgun Gothic"
 			Instl                   = "소프트웨어 설치"
 			Setting                 = "설정"
 			Refresh                 = "새로 고침"
@@ -362,8 +371,8 @@ $AvailableLanguages = @(
 			FileName                = "파일"
 			SaveTo                  = "저장 위치"
 			ItInstalled             = "설치됨"
-			UpdateServeravailable   = "상태: 가능"
-			NotAvailable            = "상태: 사용할 수 없음"
+			UpdateAvailable         = "가능"
+			UpdateUnavailable       = "사용할 수 없음"
 			ExistingInstlPacker     = "이미 압축됨"
 			DownloadLinkError       = "다운로드 주소가 잘못되었습니다."
 			ErrorDown               = "다운로드 중 오류가 발생했습니다."
@@ -402,7 +411,9 @@ $AvailableLanguages = @(
 	}
 	@{
 		Tag      = "zh-CN"
+		Name     = "Chinese (Simplified, China)"
 		Language = @{
+			FontsUI                 = "Microsoft YaHei UI"
 			Instl                   = "软件安装"
 			Setting                 = "设置"
 			Refresh                 = "刷新"
@@ -429,8 +440,8 @@ $AvailableLanguages = @(
 			FileName                = "文件名"
 			SaveTo                  = "保存到"
 			ItInstalled             = "已安装"
-			UpdateServeravailable   = "状态：可用"
-			NotAvailable            = "状态：不可用"
+			UpdateAvailable         = "可用"
+			UpdateUnavailable       = "不可用"
 			ExistingInstlPacker     = "已有压缩包"
 			DownloadLinkError       = "下载地址无效。"
 			ErrorDown               = "下载过程中出现错误"
@@ -469,7 +480,9 @@ $AvailableLanguages = @(
 	}
 	@{
 		Tag      = "zh-TW"
+		Name     = "Chinese (Traditional, Taiwan)"
 		Language = @{
+			FontsUI                 = "Microsoft JhengHei UI"
 			Instl                   = "軟件安裝"
 			Setting                 = "設置"
 			Refresh                 = "刷新"
@@ -496,8 +509,8 @@ $AvailableLanguages = @(
 			FileName                = "檔案名稱"
 			SaveTo                  = "保存到"
 			ItInstalled             = "已安裝"
-			UpdateServeravailable   = "狀態：可用"
-			NotAvailable            = "狀態：不可用"
+			UpdateAvailable         = "可用"
+			UpdateUnavailable       = "不可用"
 			ExistingInstlPacker     = "已有壓縮包"
 			DownloadLinkError       = "下載地址無效。"
 			ErrorDown               = "下載過程中出現錯誤"
@@ -538,12 +551,16 @@ $AvailableLanguages = @(
 
 Function Language
 {
+	param
+	(
+		$NewLang = (Get-Culture).Name
+	)
+
 	$Global:lang = @()
 	$Global:IsLang = ""
-	$PrimaryLnguage = (Get-Culture).Name
 
 	ForEach ($item in $AvailableLanguages) {
-		if ($item.Tag -eq $PrimaryLnguage) {
+		if ($item.Tag -eq $NewLang) {
 			$Global:lang = $item.Language
 			$Global:IsLang = $item.Tag
 			return
@@ -559,7 +576,6 @@ Function Language
 	}
 
 	Write-Host "No language packs found, please try again." -ForegroundColor Red
-	Start-Sleep -s 2
 	exit
 }
 
@@ -571,8 +587,8 @@ Function Get_Architecture
 	<#
 		.从注册表获取：用户指定系统架构
 	#>
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "Architecture" -ErrorAction SilentlyContinue) {
-		$Global:InstlArchitecture = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "Architecture"
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Install" -Name "Architecture" -ErrorAction SilentlyContinue) {
+		$Global:InstlArchitecture = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "Architecture" -ErrorAction SilentlyContinue
 		return
 	}
 
@@ -592,7 +608,7 @@ Function Set_Architecture
 		[string]$Type
 	)
 
-	$FullPath = "HKCU:\SOFTWARE\$($Author)\Install"
+	$FullPath = "HKCU:\SOFTWARE\Yi\Install"
 
 	if (-not (Test-Path $FullPath)) {
 		New-Item -Path $FullPath -Force -ErrorAction SilentlyContinue | Out-Null
@@ -607,8 +623,8 @@ Function Set_Architecture
 #>
 Function Install_Init_Disk_To
 {
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskTo" -ErrorAction SilentlyContinue) {
-		$GetDiskTo = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskTo"
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskTo" -ErrorAction SilentlyContinue) {
+		$GetDiskTo = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskTo" -ErrorAction SilentlyContinue
 		if (Test_Available_Disk -Path $GetDiskTo) {
 			$Global:FreeDiskTo = $GetDiskTo
 			return
@@ -618,17 +634,18 @@ Function Install_Init_Disk_To
 	<#
 		.搜索磁盘条件，排除系统盘
 	#>
-	$drives = Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | Where-Object { -not ((Join_MainFolder -Path $env:SystemDrive) -eq $_.Root) } | Select-Object -ExpandProperty 'Root'
+	$ExcludeDisk = @(
+		Join_MainFolder -Path $env:SystemDrive
+		"A:\"
+		"B:\"
+	)
 
-	<#
-		.从注册表里获取是否检查磁盘可用空间
-	#>
-	$GetDiskStatus = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskStatus"
+	$drives = Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Where-Object { $ExcludeDisk -notcontains $_.Root } | Select-Object -ExpandProperty 'Root'
 
 	<#
 		.从注册表里获取选择的磁盘
 	#>
-	$GetDiskMinSize = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskMinSize"
+	$GetDiskMinSize = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskMinSize" -ErrorAction SilentlyContinue
 
 	<#
 		.搜索磁盘条件，排除系统盘
@@ -660,7 +677,7 @@ Function SetNewFreeDiskTo
 		[string]$Disk
 	)
 
-	$FullPath = "HKCU:\SOFTWARE\$($Author)\Install"
+	$FullPath = "HKCU:\SOFTWARE\Yi\Install"
 
 	if (-not (Test-Path $FullPath)) {
 		New-Item -Path $FullPath -Force -ErrorAction SilentlyContinue | Out-Null
@@ -675,8 +692,8 @@ Function SetNewFreeDiskTo
 #>
 Function Setting_Init_Disk_Free
 {
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskMinSize" -ErrorAction SilentlyContinue) {
-		$GetDiskMinSize = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskMinSize"
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskMinSize" -ErrorAction SilentlyContinue) {
+		$GetDiskMinSize = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskMinSize" -ErrorAction SilentlyContinue
 
 		if ([string]::IsNullOrEmpty($GetDiskMinSize)) {
 			Setting_Set_Disk_Free -Size $Script:DiskMinSize
@@ -697,7 +714,7 @@ Function Setting_Set_Disk_Free
 		[string]$Size
 	)
 
-	$FullPath = "HKCU:\SOFTWARE\$($Author)\Install"
+	$FullPath = "HKCU:\SOFTWARE\Yi\Install"
 
 	if (-not (Test-Path $FullPath)) {
 		New-Item -Path $FullPath -Force -ErrorAction SilentlyContinue | Out-Null
@@ -710,8 +727,11 @@ Function Setting_Set_Disk_Free
 #>
 Function Setting_Init_Disk_Available
 {
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskStatus" -ErrorAction SilentlyContinue) {
-		$GetDiskStatus = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskStatus"
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskStatus" -ErrorAction SilentlyContinue) {
+		<#
+			.从注册表里获取是否检查磁盘可用空间
+		#>
+		$GetDiskStatus = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskStatus" -ErrorAction SilentlyContinue
 
 		if ([string]::IsNullOrEmpty($GetDiskStatus)) {
 			Setting_Set_Disk_Available -Status "True"
@@ -733,7 +753,7 @@ Function Setting_Set_Disk_Available
 		[string]$Status
 	)
 
-	$FullPath = "HKCU:\SOFTWARE\$($Author)\Install"
+	$FullPath = "HKCU:\SOFTWARE\Yi\Install"
 
 	if (-not (Test-Path $FullPath)) {
 		New-Item -Path $FullPath -Force -ErrorAction SilentlyContinue | Out-Null
@@ -757,7 +777,7 @@ Function Verify_Available_Size
 	$TempCheckVerify = $false
 
 	Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | Where-Object { ((Join_MainFolder -Path $Disk) -eq $_.Root) } | ForEach-Object {
-		if ($_.Free -gt (Convert_Size -From GB -To Bytes $Size)) {
+		if ($_.Free -gt (Convert_Size -From GB -To Bytes -Size $Size)) {
 			$TempCheckVerify = $True
 		} else {
 			$TempCheckVerify = $false
@@ -779,25 +799,27 @@ Function Convert_Size
 		[validateset("Bytes","KB","MB","GB","TB")]
 		[string]$To,
 		[Parameter(Mandatory=$true)]
-		[double]$Value,
+		[double]$Size,
 		[int]$Precision = 4
 	)
+
 	switch($From) {
-		"Bytes" { $value = $Value }
-		"KB" { $value = $Value * 1024 }
-		"MB" { $value = $Value * 1024 * 1024 }
-		"GB" { $value = $Value * 1024 * 1024 * 1024 }
-		"TB" { $value = $Value * 1024 * 1024 * 1024 * 1024 }
-	}
-	switch ($To) {
-		"Bytes" { return $value }
-		"KB" { $Value = $Value/1KB }
-		"MB" { $Value = $Value/1MB }
-		"GB" { $Value = $Value/1GB }
-		"TB" { $Value = $Value/1TB }
+		"Bytes" { $Size = $Size }
+		"KB" { $Size = $Size * 1024 }
+		"MB" { $Size = $Size * 1024 * 1024 }
+		"GB" { $Size = $Size * 1024 * 1024 * 1024 }
+		"TB" { $Size = $Size * 1024 * 1024 * 1024 * 1024 }
 	}
 
-	return [Math]::Round($value, $Precision, [MidPointRounding]::AwayFromZero)
+	switch ($To) {
+		"Bytes" { return $Size }
+		"KB" { $Size = $Size/1KB }
+		"MB" { $Size = $Size/1MB }
+		"GB" { $Size = $Size/1GB }
+		"TB" { $Size = $Size/1TB }
+	}
+
+	return [Math]::Round($Size, $Precision, [MidPointRounding]::AwayFromZero)
 }
 
 Function Test_Available_Disk
@@ -826,6 +848,10 @@ Function Test_Available_Disk
 	}
 }
 
+<#
+	.Test if the URL address is available
+	.测试 URL 地址是否可用
+#>
 Function Test_URI
 {
 	Param
@@ -834,11 +860,14 @@ Function Test_URI
 		[ValidatePattern( "^(http|https)://" )]
 		[Alias("url")]
 		[string]$URI,
+
 		[Parameter(ParameterSetName="Detail")]
 		[Switch]$Detail,
+
 		[ValidateScript({$_ -ge 0})]
 		[int]$Timeout = 30
 	)
+
 	Process
 	{
 		Try
@@ -852,10 +881,20 @@ Function Test_URI
 				TimeoutSec = $Timeout
 			}
 			$test = Invoke-WebRequest @paramHash
+
 			if ($Detail) {
-				$test.BaseResponse | Select-Object ResponseURI,ContentLength,ContentType,LastModified, @{Name="Status";Expression={$Test.StatusCode}}
+				$test.BaseResponse | Select-Object ResponseURI, ContentLength, ContentType, LastModified, @{
+					Name = "Status";
+					Expression = {
+						$Test.StatusCode
+					}
+				}
 			} else {
-				if ($test.statuscode -ne 200) { $False } else { $True }
+				if ($test.statuscode -ne 200) {
+					$False
+				} else {
+					$True
+				}
 			}
 		} Catch {
 			write-verbose -message $_.exception
@@ -867,8 +906,11 @@ Function Test_URI
 					LastModified = $null
 					Status = 404
 				}
+
 				New-Object -TypeName psobject -Property $objProp
-			} else { $False }
+			} else {
+				$False
+			}
 		}
 	}
 }
@@ -888,8 +930,8 @@ Function Check_Folder
 		if (Test-Path -Path $chkpath -PathType Container) {
 
 		} else {
-			Write-Host "`n   $($lang.FailedCreateFolder)"
-			Write-Host "   $($chkpath)" -ForegroundColor Red
+			write-host "`n  $($lang.FailedCreateFolder)"
+			write-host "  $($chkpath)" -ForegroundColor Red
 			return
 		}
 	}
@@ -926,7 +968,7 @@ Function Install_Process
 		$param
 	)
 
-	Write-Host "   $($lang.Installing) - $($appname)" -ForegroundColor Green
+	write-host "  $($lang.Installing) - $($appname)" -ForegroundColor Green
 
 	switch ($Global:InstlArchitecture) {
 		"arm64" {
@@ -984,41 +1026,43 @@ Function Install_Process
 		{
 			Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | ForEach-Object {
 				$TempRootPath = $_.Root
-				$tempoutputfoldoer = Join-Path -Path $TempRootPath -ChildPath $structure -ErrorAction SilentlyContinue
+				$tempoutputfoldoer = Join-Path -Path $TempRootPath -ChildPath $structure
 
 				Get-ChildItem -Path $tempoutputfoldoer -Filter "*$($filename)*$((Get-Culture).Name)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-					$OutTo = Join-Path -Path $TempRootPath -ChildPath $structure -ErrorAction SilentlyContinue
+					$OutTo = Join-Path -Path $TempRootPath -ChildPath $structure
 					$OutAny = $_.fullname
 					break
 				}
 
 				Get-ChildItem -Path $tempoutputfoldoer -Filter "*$($filename)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-					$OutTo = Join-Path -Path $TempRootPath -ChildPath $structure -ErrorAction SilentlyContinue
+					$OutTo = Join-Path -Path $TempRootPath -ChildPath $structure
 					$OutAny = $_.fullname
 					break
 				}
 
 				Get-ChildItem -Path $tempoutputfoldoer -Filter "*$($packer)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-					$OutTo = Join-Path -Path $TempRootPath -ChildPath $structure -ErrorAction SilentlyContinue
+					$OutTo = Join-Path -Path $TempRootPath -ChildPath $structure
 					$OutAny = $_.fullname
 					break
 				}
-				$OutTo = Join-Path -Path $Global:FreeDiskTo -ChildPath $structure -ErrorAction SilentlyContinue
-				$OutAny = Join-Path -Path $Global:FreeDiskTo -ChildPath "$($structure)\$($SaveToName)" -ErrorAction SilentlyContinue
+				$OutTo = Join-Path -Path $Global:FreeDiskTo -ChildPath $structure
+				$OutAny = Join-Path -Path $Global:FreeDiskTo -ChildPath "$($structure)\$($SaveToName)"
 			}
 		}
 		PSScriptRoot
 		{
-			$OutTo = Join-Path -Path $(Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue) -ChildPath $structure -ErrorAction SilentlyContinue
-			$OutAny = Join-Path -Path $(Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue) -ChildPath "$($structure)\$($SaveToName)" -ErrorAction SilentlyContinue
+			$OutTo = Join-Path -Path $(Convert-Path -Path $PSScriptRoot) -ChildPath $structure
+			$OutAny = Join-Path -Path $(Convert-Path -Path $PSScriptRoot) -ChildPath "$($structure)\$($SaveToName)"
 			Get-ChildItem -Path $OutTo -Filter "*$($filename)*$((Get-Culture).Name)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 				$OutAny = $_.fullname
 				break
 			}
+
 			Get-ChildItem -Path $OutTo -Filter "*$($filename)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 				$OutAny = $_.fullname
 				break
 			}
+
 			Get-ChildItem -Path $OutTo -Filter "*$($packer)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 				$OutAny = $_.fullname
 				break
@@ -1026,16 +1070,18 @@ Function Install_Process
 		}
 		default
 		{
-			$OutTo = Join-Path -Path $todisk -ChildPath $structure -ErrorAction SilentlyContinue
-			$OutAny = Join-Path -Path $todisk -ChildPath "$($structure)\$($SaveToName)" -ErrorAction SilentlyContinue
+			$OutTo = Join-Path -Path $todisk -ChildPath $structure
+			$OutAny = Join-Path -Path $todisk -ChildPath "$($structure)\$($SaveToName)"
 			Get-ChildItem -Path $OutTo -Filter "*$($filename)*$((Get-Culture).Name)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 				$OutAny = $_.fullname
 				break
 			}
+
 			Get-ChildItem -Path $OutTo -Filter "*$($filename)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 				$OutAny = $_.fullname
 				break
 			}
+
 			Get-ChildItem -Path $OutTo -Filter "*$($packer)*" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
 				$OutAny = $_.fullname
 				break
@@ -1047,193 +1093,192 @@ Function Install_Process
 	{
 		zip
 		{
-			Switch ($act)
-			{
-				Install
-				{
+			Switch ($act) {
+				Install {
 					Get-ChildItem -Path $OutTo -Filter "*$($filename)*$((Get-Culture).Name)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-						Write-Host "    - $($lang.LocallyExist): " -NoNewline -ForegroundColor Yellow
-						Write-host $_.fullname -ForegroundColor Green
-						write-host
+						write-host "   - $($lang.LocallyExist): " -NoNewline -ForegroundColor Yellow
+						Write-Host $_.fullname -ForegroundColor Green
+						Write-Host
 
 						Open_Apps -filename $_.fullname -param $param -mode $mode
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($filename)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-						Write-Host "    - $($lang.LocallyExist): " -NoNewline -ForegroundColor Yellow
-						Write-host $_.fullname -ForegroundColor Green
-						write-host
+						write-host "   - $($lang.LocallyExist): " -NoNewline -ForegroundColor Yellow
+						Write-Host $_.fullname -ForegroundColor Green
+						Write-Host
 
 						Open_Apps -filename $_.fullname -param $param -mode $mode
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($packer)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-						Write-Host "   - $($lang.LocallyExist): " -NoNewline -ForegroundColor Yellow
-						Write-host $_.fullname -ForegroundColor Green
-						write-host
+						write-host "  - $($lang.LocallyExist): " -NoNewline -ForegroundColor Yellow
+						Write-Host $_.fullname -ForegroundColor Green
+						Write-Host
 
 						Open_Apps -filename $_.fullname -param $param -mode $mode
 						break
 					}
 					if (Test-Path $OutAny) {
-						Write-Host "    - $($lang.ExistingPacker)"
+						write-host "   - $($lang.ExistingPacker)"
 					} else {
-						Write-Host "    * $($lang.StartDown)"
+						write-host "   * $($lang.StartDown)"
 						if ([string]::IsNullOrEmpty($url)) {
-							Write-Host "    - $($lang.DownloadLinkError)" -ForegroundColor Red
+							write-host "   - $($lang.DownloadLinkError)" -ForegroundColor Red
 						} else {
 							if (Test_URI $url) {
-								Write-Host "      > $($lang.ConnectTo)" -ForegroundColor Yellow
-								Write-Host "        $($url)" -ForegroundColor Green
-								Write-Host "`n      + $($lang.SaveTo)" -ForegroundColor Yellow
-								Write-Host "        $($OutAny)" -ForegroundColor Green
+								write-host "    > $($lang.ConnectTo)" -ForegroundColor Yellow
+								write-host "      $($url)" -ForegroundColor Green
+								write-host
+								write-host "    + $($lang.SaveTo)" -ForegroundColor Yellow
+								write-host "      $($OutAny)" -ForegroundColor Green
 
 								Check_Folder -chkpath $OutTo
 								Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 							} else {
-								Write-Host "      - $($lang.NotAvailable)" -ForegroundColor Red
+								write-host "     - $($lang.UpdateUnavailable)" -ForegroundColor Red
 							}
 						}
 					}
 					if (Test-Path $OutAny) {
-						Write-Host "    - $($lang.Unpacking)".PadRight(28) -NoNewline
+						write-host "   - $($lang.Unpacking)".PadRight(28) -NoNewline
 
 						Archive -Password $pwd -filename $OutAny -to $OutTo
 						Remove-Item -path $OutAny -force -ErrorAction SilentlyContinue
 					} else {
-						Write-Host "      - $($lang.ErrorDown)`n" -ForegroundColor Red
+						write-host "     - $($lang.ErrorDown)`n" -ForegroundColor Red
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($filename)*$((Get-Culture).Name)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-						Write-Host "    - $($lang.LocallyExist): " -ForegroundColor Yellow
-						Write-host "      $($_.fullname)" -ForegroundColor Green
-						write-host
+						write-host "   - $($lang.LocallyExist): " -ForegroundColor Yellow
+						write-host "     $($_.fullname)" -ForegroundColor Green
+						Write-Host
 
 						Open_Apps -filename $_.fullname -param $param -mode $mode
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($filename)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-						Write-Host "    - $($lang.LocallyExist): " -ForegroundColor Yellow
-						Write-host "      $($_.fullname)" -ForegroundColor Green
-						write-host
+						write-host "   - $($lang.LocallyExist): " -ForegroundColor Yellow
+						write-host "     $($_.fullname)" -ForegroundColor Green
+						Write-Host
 
 						Open_Apps -filename $_.fullname -param $param -mode $mode
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($packer)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
-						Write-Host "    - $($lang.LocallyExist): " -ForegroundColor Yellow
-						Write-host "      $($_.fullname)" -ForegroundColor Green
-						write-host
+						write-host "   - $($lang.LocallyExist): " -ForegroundColor Yellow
+						write-host "     $($_.fullname)" -ForegroundColor Green
+						Write-Host
 
 						Open_Apps -filename $_.fullname -param $param -mode $mode
 						break
 					}
 				}
-				NoInst
-				{
+				NoInst {
 					if (Test-Path $OutAny) {
-						Write-Host "    - $($lang.ItInstalled)`n"
+						write-host "   - $($lang.ItInstalled)`n"
 					} else {
-						Write-Host "    * $($lang.StartDown)"
+						write-host "   * $($lang.StartDown)"
 						if ([string]::IsNullOrEmpty($url)) {
-							Write-Host "      - $($lang.DownloadLinkError)" -ForegroundColor Red
+							write-host "     - $($lang.DownloadLinkError)" -ForegroundColor Red
 						} else {
 							if (Test_URI $url) {
-								Write-Host "      > $($lang.ConnectTo)" -ForegroundColor Yellow
-								Write-Host "        $($url)" -ForegroundColor Green
-								Write-Host "`n      + $($lang.SaveTo)" -ForegroundColor Yellow
-								Write-Host "        $($OutAny)" -ForegroundColor Green
+								write-host "    > $($lang.ConnectTo)" -ForegroundColor Yellow
+								write-host "      $($url)" -ForegroundColor Green
+								write-host
+								write-host "    + $($lang.SaveTo)" -ForegroundColor Yellow
+								write-host "      $($OutAny)" -ForegroundColor Green
 
 								Check_Folder -chkpath $OutTo
 								Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 							} else {
-								Write-Host "      - $($lang.NotAvailable)`n" -ForegroundColor Red
+								write-host "     - $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 							}
 						}
 					}
 				}
-				To
-				{
+				To {
 					$newoutputfoldoer = "$($OutTo)\$($packer)"
 					if (Test-Path $newoutputfoldoer -PathType Container) {
-						Write-Host "    - $($lang.ItInstalled)`n"
+						write-host "   - $($lang.ItInstalled)`n"
 						break
 					}
 					if (Test-Path $OutAny) {
-						Write-Host "    - $($lang.ExistingInstlPacker)"
+						write-host "   - $($lang.ExistingInstlPacker)"
 					} else {
-						Write-Host "    * $($lang.StartDown)"
+						write-host "   * $($lang.StartDown)"
 						if ([string]::IsNullOrEmpty($url)) {
-							Write-Host "      - $($lang.DownloadLinkError)" -ForegroundColor Red
+							write-host "     - $($lang.DownloadLinkError)" -ForegroundColor Red
 						} else {
-							Write-Host "      > $($lang.ConnectTo)" -ForegroundColor Yellow
-							Write-Host "        $($url)" -ForegroundColor Green
-							Write-Host "`n      + $($lang.SaveTo)" -ForegroundColor Yellow
-							Write-Host "        $($OutAny)" -ForegroundColor Green
+							write-host "    > $($lang.ConnectTo)" -ForegroundColor Yellow
+							write-host "      $($url)" -ForegroundColor Green
+							write-host
+							write-host "    + $($lang.SaveTo)" -ForegroundColor Yellow
+							write-host "      $($OutAny)" -ForegroundColor Green
 
 							Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 						}
 					}
 					if (Test-Path $OutAny) {
-						Write-Host "    - $($lang.OnlyUnzip)".PadRight(28) -NoNewline
+						write-host "   - $($lang.OnlyUnzip)".PadRight(28) -NoNewline
 						Archive -Password $pwd -filename $OutAny -to $newoutputfoldoer
 						Remove-Item -path $OutAny -force -ErrorAction SilentlyContinue
 					} else {
-						Write-Host "      - $($lang.ErrorDown)`n" -ForegroundColor Red
+						write-host "     - $($lang.ErrorDown)`n" -ForegroundColor Red
 					}
 				}
-				Unzip
-				{
+				Unzip {
 					if (Test-Path $OutAny) {
-						Write-Host "    - $($lang.ExistingPacker)"
+						write-host "   - $($lang.ExistingPacker)"
 					} else {
-						Write-Host "    * $($lang.StartDown)"
+						write-host "   * $($lang.StartDown)"
 						if ([string]::IsNullOrEmpty($url)) {
-							Write-Host "      - $($lang.DownloadLinkError)" -ForegroundColor Red
+							write-host "     - $($lang.DownloadLinkError)" -ForegroundColor Red
 						} else {
 							if (Test_URI $url) {
-								Write-Host "      > $($lang.ConnectTo)" -ForegroundColor Yellow
-								Write-Host "        $($url)" -ForegroundColor Green
-								Write-Host "`n      + $($lang.SaveTo)" -ForegroundColor Yellow
-								Write-Host "        $($OutAny)" -ForegroundColor Green
+								write-host "    > $($lang.ConnectTo)" -ForegroundColor Yellow
+								write-host "      $($url)" -ForegroundColor Green
+								write-host
+								write-host "    + $($lang.SaveTo)" -ForegroundColor Yellow
+								write-host "      $($OutAny)" -ForegroundColor Green
 
 								Check_Folder -chkpath $OutTo
 								Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 							} else {
-								Write-Host "      - $($lang.NotAvailable)`n" -ForegroundColor Red
+								write-host "     - $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 							}
 						}
 					}
 					if (Test-Path $OutAny) {
-						Write-Host "    - $($lang.OnlyUnzip)".PadRight(28) -NoNewline
+						write-host "   - $($lang.OnlyUnzip)".PadRight(28) -NoNewline
 						Archive -Password $pwd -filename $OutAny -to $OutTo
 						Remove-Item -path $OutAny -force -ErrorAction SilentlyContinue
 					} else {
-						Write-Host "      - $($lang.ErrorDown)`n" -ForegroundColor Red
+						write-host "     - $($lang.ErrorDown)`n" -ForegroundColor Red
 					}
 				}
 			}
 		}
-		default
-		{
+		default {
 			if (Test-Path $OutAny -PathType Leaf) {
 				Open_Apps -filename $OutAny -param $param -mode $mode
 			} else {
-				Write-Host "    * $($lang.StartDown)"
+				write-host "   * $($lang.StartDown)"
 				if ([string]::IsNullOrEmpty($url)) {
-					Write-Host "      - $($lang.DownloadLinkError)`n" -ForegroundColor Red
+					write-host "     - $($lang.DownloadLinkError)`n" -ForegroundColor Red
 				} else {
-					Write-Host "      > $($lang.ConnectTo)" -ForegroundColor Yellow
-					Write-Host "        $($url)" -ForegroundColor Green
+					write-host "    > $($lang.ConnectTo)" -ForegroundColor Yellow
+					write-host "      $($url)" -ForegroundColor Green
 
 					if (Test_URI $url) {
-						Write-Host "`n      + $($lang.SaveTo)" -ForegroundColor Yellow
-						Write-Host "        $($OutAny)`n" -ForegroundColor Green
+						write-host
+						write-host "    + $($lang.SaveTo)" -ForegroundColor Yellow
+						write-host "      $($OutAny)`n" -ForegroundColor Green
 
 						Check_Folder -chkpath $OutTo
 						Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 						Open_Apps -filename $OutAny -param $param -mode $mode
 					} else {
-						Write-Host "      - $($lang.NotAvailable)`n" -ForegroundColor Red
+						write-host "     - $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 					}
 				}
 			}
@@ -1250,18 +1295,18 @@ Function Get_Arch_Path
 
 	switch ($env:PROCESSOR_ARCHITECTURE) {
 		"arm64" {
-			if (Test-Path -Path "$($Path)\$($arm64)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($arm64)" -ErrorAction SilentlyContinue
+			if (Test-Path -Path "$($Path)\arm64" -PathType Container) {
+				return Convert-Path -Path "$($Path)\arm64" -ErrorAction SilentlyContinue
 			}
 		}
 		"AMD64" {
-			if (Test-Path -Path "$($Path)\$($AMD64)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($AMD64)" -ErrorAction SilentlyContinue
+			if (Test-Path -Path "$($Path)\AMD64" -PathType Container) {
+				return Convert-Path -Path "$($Path)\AMD64" -ErrorAction SilentlyContinue
 			}
 		}
 		"x86" {
-			if (Test-Path -Path "$($Path)\$($x86)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($x86)" -ErrorAction SilentlyContinue
+			if (Test-Path -Path "$($Path)\x86" -PathType Container) {
+				return Convert-Path -Path "$($Path)\x86" -ErrorAction SilentlyContinue
 			}
 		}
 	}
@@ -1306,13 +1351,13 @@ Function Archive
 		$to = Convert-Path -Path $to -ErrorAction SilentlyContinue
 	}
 
-	Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+	write-host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 	Write-Host $filename -ForegroundColor Green
 
-	Write-host "   $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
+	write-host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 	Write-Host $to -ForegroundColor Green
 
-	Write-Host "   $($lang.Unpacking)".PadRight(28) -NoNewlinee
+	write-host "  $($lang.Unpacking)".PadRight(28) -NoNewlinee
 
 	$Verify_Install_Path = Get_Zip -Run "7z.exe"
 	if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
@@ -1341,19 +1386,22 @@ Function Archive
 			Start-Process -FilePath $Verify_Install_Path -ArgumentList $Arguments -Wait -WindowStyle Minimized
 		}
 
-		Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+		Write-Host $lang.Done -ForegroundColor Green
 	} else {
+		Add-Type -AssemblyName System.IO.Compression.FileSystem
 		Expand-Archive -LiteralPath $filename -DestinationPath $to -force
-		Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+		Write-Host $lang.Done -ForegroundColor Green
 	}
+
+	Write-Host
 }
 
 Function Wait_Process_End
 {
-	Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Green
+	write-host "`n  $($lang.WaitQueue)" -ForegroundColor Green
 	if ($Script:AppQueue.Count -gt 0) {
 		foreach ($item in $Script:AppQueue) {
-			Write-Host "    * PID: $($item.ID)".PadRight(22) -NoNewline
+			write-host "   * PID: $($item.ID)".PadRight(22) -NoNewline
 
 			while ($true) {
 				if ((Get-Process -ID $item.ID -ErrorAction SilentlyContinue).Path -eq $item.Path) {
@@ -1365,7 +1413,7 @@ Function Wait_Process_End
 			}
 		}
 	} else {
-		Write-host "   $($lang.NoWork)" -ForegroundColor Red
+		write-host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	$Script:AppQueue = @()
@@ -1381,44 +1429,41 @@ Function Open_Apps
 	)
 
 	if (Test-Path $filename -PathType Leaf) {
-		Switch ($mode)
-		{
+		Switch ($mode) {
 			Fast {
-				if ([string]::IsNullOrEmpty($param))
-				{
-					Write-Host "    - $($lang.QucikRun)" -ForegroundColor Yellow
-					Write-host "      $($filename)`n" -ForegroundColor Green
+				if ([string]::IsNullOrEmpty($param)) {
+					write-host "   - $($lang.QucikRun)" -ForegroundColor Yellow
+					write-host "     $($filename)`n" -ForegroundColor Green
 
 					Start-Process -FilePath $filename
 				} else {
-					Write-Host "    - $($lang.QucikRun)" -ForegroundColor Yellow
-					Write-host "      $($filename)" -ForegroundColor Green
+					write-host "   - $($lang.QucikRun)" -ForegroundColor Yellow
+					write-host "     $($filename)" -ForegroundColor Green
 
-					Write-Host "`n    - $($lang.Parameter)" -ForegroundColor Yellow
-					Write-host "      $($param)`n" -ForegroundColor Green
+					write-host "`n  - $($lang.Parameter)" -ForegroundColor Yellow
+					write-host "     $($param)`n" -ForegroundColor Green
 
 					Start-Process -FilePath $filename -ArgumentList $param
 				}
 			}
 			Wait {
-				if ([string]::IsNullOrEmpty($param))
-				{
-					Write-Host "    - $($lang.WaitDone)" -ForegroundColor Yellow
-					Write-host "      $($filename)`n" -ForegroundColor Green
+				if ([string]::IsNullOrEmpty($param)) {
+					write-host "   - $($lang.WaitDone)" -ForegroundColor Yellow
+					write-host "     $($filename)`n" -ForegroundColor Green
 					Start-Process -FilePath $filename -Wait
 				} else {
-					Write-Host "    - $($lang.WaitDone)" -ForegroundColor Yellow
-					Write-host "      $($filename)" -ForegroundColor Green
+					write-host "   - $($lang.WaitDone)" -ForegroundColor Yellow
+					write-host "     $($filename)" -ForegroundColor Green
 
-					Write-Host "`n    - $($lang.Parameter)" -ForegroundColor Yellow
-					Write-host "      $($param)`n" -ForegroundColor Green
+					write-host "`n  - $($lang.Parameter)" -ForegroundColor Yellow
+					write-host "     $($param)`n" -ForegroundColor Green
 
 					Start-Process -FilePath $filename -ArgumentList $param -Wait
 				}
 			}
 			Queue {
-				Write-Host "    - $($lang.QucikRun)" -ForegroundColor Yellow
-				Write-host "      $($filename)" -ForegroundColor Green
+				write-host "   - $($lang.QucikRun)" -ForegroundColor Yellow
+				write-host "     $($filename)" -ForegroundColor Green
 
 				if ([string]::IsNullOrEmpty($param)) {
 					$AppRunQueue = Start-Process -FilePath $filename -passthru
@@ -1427,10 +1472,10 @@ Function Open_Apps
 						PATH = $filename
 					}
 
-					Write-Host "    - $($lang.AddQueue)" -NoNewline -ForegroundColor Yellow
-					Write-host $AppRunQueue.Id -ForegroundColor Green
+					write-host "   - $($lang.AddQueue)" -NoNewline -ForegroundColor Yellow
+					Write-Host $AppRunQueue.Id -ForegroundColor Green
 
-					Write-host
+					Write-Host
 				} else {
 					$AppRunQueue = Start-Process -FilePath $filename -ArgumentList $param -passthru
 					$Script:AppQueue += @{
@@ -1438,19 +1483,19 @@ Function Open_Apps
 						PATH = $filename
 					}
 
-					Write-Host "`n    - $($lang.Parameter)" -ForegroundColor Yellow
-					Write-host "      $($param)" -ForegroundColor Green
+					write-host "`n  - $($lang.Parameter)" -ForegroundColor Yellow
+					write-host "     $($param)" -ForegroundColor Green
 
-					Write-Host "    - $($lang.AddQueue)" -NoNewline -ForegroundColor Yellow
-					Write-host $AppRunQueue.Id -ForegroundColor Green
+					write-host "   - $($lang.AddQueue)" -NoNewline -ForegroundColor Yellow
+					Write-Host $AppRunQueue.Id -ForegroundColor Green
 
-					Write-host
+					Write-Host
 				}
 			}
 		}
 	} else {
-		Write-Host "    - $($lang.InstlNo)" -ForegroundColor Yellow
-		Write-Host "      $($filename)" -ForegroundColor Red
+		write-host "   - $($lang.InstlNo)" -ForegroundColor Yellow
+		write-host "     $($filename)" -ForegroundColor Red
 	}
 }
 
@@ -1460,15 +1505,15 @@ Function ToMainpage
 	(
 		[int]$wait
 	)
-	Write-Host "   $($lang.ToQuit -f $wait)" -ForegroundColor Red
+	write-host "  $($lang.ToQuit -f $wait)" -ForegroundColor Red
 	Start-Sleep -s $wait
 	exit
 }
 
 Function Install_Start_Process
 {
-	Write-Host "`n   $($lang.Instllsoftwareing) ( $($Script:Install_App.Count) )" -ForegroundColor Yellow
-	Write-host "   $('-' * 80)"
+	write-host "`n  $($lang.Instllsoftwareing) ( $($Script:Install_App.Count) )" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 	if ($Script:Install_App.Count -gt 0) {
 		foreach ($item in $Script:Install_App) {
 			Install_Process -appname $item.Name -act $item.Action -mode $item.Manner -todisk $item.DLetter -structure $item.Structure -pwd $item.Unpwd -url $item.url.x86 -urlAMD64 $item.url.x64 -urlarm64 $item.url.arm64 -filename $item.FindFile -param $item.param
@@ -1476,7 +1521,7 @@ Function Install_Start_Process
 
 		Wait_Process_End
 	} else {
-		Write-host "   $($lang.InstllUnavailable)" -ForegroundColor Red
+		write-host "  $($lang.InstllUnavailable)" -ForegroundColor Red
 	}
 }
 
@@ -1495,6 +1540,7 @@ Function Update_Setting_UI
 		Height         = 720
 		Width          = 550
 		Text           = $lang.UpdateList
+		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
 		MinimizeBox    = $False
@@ -1573,13 +1619,13 @@ Function Update_Setting_UI
 		UseVisualStyleBackColor = $True
 		Height         = 36
 		Width          = 255
+		Text           = $lang.Cancel
 		Location       = "268,635"
 		add_Click      = {
 			$UI_Main.Hide()
 			$Script:ServerList = @()
 			$UI_Main.Close()
 		}
-		Text           = $lang.Cancel
 	}
 	$UI_Main.controls.AddRange((
 		$GUIUpdateAuto,
@@ -1626,15 +1672,6 @@ Function Update_Setting_UI
 	})
 	$UI_Main_Menu.ContextMenuStrip = $UI_MainMenu
 
-	switch ($Global:IsLang) {
-		"zh-CN" {
-			$UI_Main.Font = New-Object System.Drawing.Font("Microsoft YaHei", 9, [System.Drawing.FontStyle]::Regular)
-		}
-		Default {
-			$UI_Main.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Regular)
-		}
-	}
-
 	$UI_Main.ShowDialog() | Out-Null
 }
 
@@ -1652,10 +1689,10 @@ Function Refresh_Server_List
 		if ($Global:IsLang -eq "en-US") {
 			ForEach ($itemLink in $item.Link) {
 				$Script:ServerListSelect += $itemLink
-	        }
+			}
 
 			break
-	    }
+		}
 	}
 }
 
@@ -1671,28 +1708,28 @@ Function Update_Process
 	#>
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 2 -ErrorAction SilentlyContinue
 
-	Write-Host "`n   $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)" -ForegroundColor Yellow
-	Write-host "   $('-' * 80)"
+	write-host "`n  $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	ForEach ($item in $Script:ServerList) {
-		Write-Host "   * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
+		write-host "  * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
 		Write-Host $item -ForegroundColor Green
 
 		if (Test_URI $item) {
 			$ServerTest = $true
 			$url = $item
-			Write-Host "     $($lang.UpdateServeravailable)" -ForegroundColor Green
+			write-host "    $($lang.UpdateAvailable)" -ForegroundColor Green
 			break
 		} else {
-			Write-Host "     $($lang.NotAvailable)`n" -ForegroundColor Red
+			write-host "    $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 		}
 	}
 
 	if ($ServerTest) {
-		Write-Host "   $('-' * 80)"
-		Write-Host "     $($lang.UpdatePriority)" -ForegroundColor Green
+		write-host "  $('-' * 80)"
+		write-host "    $($lang.UpdatePriority)" -ForegroundColor Green
 
-		Write-host "`n   $($lang.UpdateQueryingUpdate)"
+		write-host "`n  $($lang.UpdateQueryingUpdate)"
 
 		$RandomGuid = [guid]::NewGuid()
 		$output = "$(Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue)\$($RandomGuid).json"
@@ -1702,10 +1739,10 @@ Function Update_Process
 		$start_time = Get-Date
 		remove-item -path $output -force -ErrorAction SilentlyContinue
 		Invoke-WebRequest -Uri $url -OutFile $output -TimeoutSec 30 -DisableKeepAlive -ErrorAction SilentlyContinue | Out-Null
-		Write-Host "`n   $($lang.UpdateTimeUsed)$((Get-Date).Subtract($start_time).Seconds) (s)`n"
+		write-host "`n  $($lang.UpdateTimeUsed)$((Get-Date).Subtract($start_time).Seconds) (s)`n"
 		
 		if (Test-Path -Path $output -PathType Leaf) {
-			Write-host "   $($lang.VerifyConfig)"
+			write-host "  $($lang.VerifyConfig)"
 
 			try {
 				$Custom_Config = Get-Content -Path $output | ConvertFrom-JSON
@@ -1713,29 +1750,29 @@ Function Update_Process
 				Move-Item $output $Script:Init_Config -Force -ErrorAction SilentlyContinue
 
 				if (Test-Path -Path $Script:Init_Config -PathType Leaf) {
-					Write-host "   $($lang.Done)" -ForegroundColor Green
+					write-host "  $($lang.Done)" -ForegroundColor Green
 				} else {
-					Write-host "   $($lang.UpdateFailedConfig)" -ForegroundColor Red
+					write-host "  $($lang.UpdateFailedConfig)" -ForegroundColor Red
 				}
 			} catch {
-				Write-host "   $($lang.ConfigError)" -ForegroundColor Red
+				write-host "  $($lang.ConfigError)" -ForegroundColor Red
 			}
 		} else {
-			Write-host "   $($lang.DownloadFailed)" -ForegroundColor Red
+			write-host "  $($lang.DownloadFailed)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "     $($lang.UpdateServerTestFailed)" -ForegroundColor Red
-		Write-Host "   $('-' * 80)"
+		write-host "    $($lang.UpdateServerTestFailed)" -ForegroundColor Red
+		write-host "  $('-' * 80)"
 
-		$output = "$(Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue)\Backup\$($Global:IsLang)\latest.json"
-		Write-host "`n   $($lang.ConfigNot)" -ForegroundColor Yellow
-		Write-host "   $('-' * 80)"
+		$output = Join-Path -Path $(Convert-Path -Path $PSScriptRoot) -ChildPath "Backup\$($Global:IsLang)\latest.json"
+		write-host "`n  $($lang.ConfigNot)" -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
 
-		Write-host "   $($output)" -ForegroundColor Yellow
-		Write-host "   $($lang.SetDefault)" -ForegroundColor Green
+		write-host "  $($output)" -ForegroundColor Yellow
+		write-host "  $($lang.SetDefault)" -ForegroundColor Green
 
 		if (Test-Path -Path $output -PathType Leaf) {
-			Write-host "`n   $($lang.VerifyConfig)"
+			write-host "`n  $($lang.VerifyConfig)"
 
 			try {
 				$Custom_Config = Get-Content -Path $output | ConvertFrom-JSON
@@ -1743,19 +1780,19 @@ Function Update_Process
 				$Script:Init_Config = $output
 
 				if (Test-Path -Path $Script:Init_Config -PathType Leaf) {
-					Write-host "   $($lang.Done)" -ForegroundColor Green
+					write-host "  $($lang.Done)" -ForegroundColor Green
 				} else {
-					Write-host "   $($lang.UpdateFailedConfig)" -ForegroundColor Red
+					write-host "  $($lang.UpdateFailedConfig)" -ForegroundColor Red
 				}
 			} catch {
-				Write-host "   $($lang.ConfigError)" -ForegroundColor Red
+				write-host "  $($lang.ConfigError)" -ForegroundColor Red
 			}
 		} else {
-			Write-host "`n   $($lang.ConfigNot)" -ForegroundColor Yellow
-			Write-host "   $('-' * 80)"
-			Write-host "   $($output)" -ForegroundColor Green
+			write-host "`n  $($lang.ConfigNot)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
+			write-host "  $($output)" -ForegroundColor Green
 
-			Write-host "   $($lang.NoInstallImage)"
+			write-host "  $($lang.NoInstallImage)"
 			return
 		}
 	}
@@ -1769,7 +1806,7 @@ Function Install_UI
 
 	Function Setting_Init_Disk_To
 	{
-		$GetDiskTo = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskTo"
+		$GetDiskTo = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskTo" -ErrorAction SilentlyContinue
 
 		$FormSelectDiSKPane1.controls.Clear()
 		Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | ForEach-Object {
@@ -1800,6 +1837,7 @@ Function Install_UI
 		Height         = 720
 		Width          = 825
 		Text           = $lang.Instl
+		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		MaximizeBox    = $False
 		StartPosition  = "CenterScreen"
 		MinimizeBox    = $false
@@ -1886,7 +1924,7 @@ Function Install_UI
 		autoSizeMode   = 1
 		Padding        = "8,0,8,0"
 		Location       = '0,0'
-		Visible        = 0
+		Visible        = $False
 	}
 	<#
 		.搜索 ISO 来源，显示菜单
@@ -2100,8 +2138,8 @@ Function Install_UI
 			$Script:Install_App = @()
 			$Custom_Config = Get-Content -Path $Script:Init_Config | ConvertFrom-JSON
 			foreach ($item in $Custom_Config) {
-			    if ($item.App.app.Count -gt 0) {
-			        foreach ($itemApp in $item.App.app) {
+				if ($item.App.app.Count -gt 0) {
+					foreach ($itemApp in $item.App.app) {
 						if (($Match_Wait_App -Contains $itemApp.Name) -or
 							($Match_Wait_App -Contains $itemApp.GUID))
 						{
@@ -2293,9 +2331,9 @@ Function Install_UI
 				}
 				$Select_App.controls.AddRange($Temp_Main_Save_Expand_Name)
 
-			    if ($item.app.Count -gt 0) {
+				if ($item.app.Count -gt 0) {
 					if ($item.app.Count -gt 0) {
-			        	foreach ($itemApp in $item.app) {
+						foreach ($itemApp in $item.app) {
 							$CheckBox    = New-Object System.Windows.Forms.Checkbox -Property @{
 								Height   = 30
 								Width    = 470
@@ -2348,15 +2386,15 @@ Function Install_UI
 		}
 	}
 
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskMinSize" -ErrorAction SilentlyContinue) {
-		$GetDiskMinSize = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskMinSize"
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskMinSize" -ErrorAction SilentlyContinue) {
+		$GetDiskMinSize = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskMinSize" -ErrorAction SilentlyContinue
 		$SelectLowSize.Text = $GetDiskMinSize
 	} else {
 		Setting_Set_Disk_Free -Size $Script:DiskMinSize
 	}
 
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskStatus" -ErrorAction SilentlyContinue) {
-		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Author)\Install" -Name "DiskStatus" -ErrorAction SilentlyContinue) {
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskStatus" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Install" -Name "DiskStatus" -ErrorAction SilentlyContinue) {
 			"True" {
 				$FormSelectDiSKLowSize.Checked = $True
 				$SelectLowSize.Enabled = $True
@@ -2410,15 +2448,6 @@ Function Install_UI
 	})
 	$Select_App.ContextMenuStrip = $SelectMenu
 
-	switch ($Global:IsLang) {
-		"zh-CN" {
-			$UI_Main.Font = New-Object System.Drawing.Font("Microsoft YaHei", 9, [System.Drawing.FontStyle]::Regular)
-		}
-		Default {
-			$UI_Main.Font = New-Object System.Drawing.Font("Segoe UI", 9, [System.Drawing.FontStyle]::Regular)
-		}
-	}
-
 	$UI_Main.ShowDialog() | Out-Null
 }
 
@@ -2427,13 +2456,13 @@ Function Mainpage
 	Clear-Host
 	$Host.UI.RawUI.WindowTitle = $lang.Instl
 
-	Write-Host "`n   Author: $($Author) ( $($AuthorURL) )
+	write-host "`n  Author: Yi ( https://fengyi.tel )
 
-   From: $($Author)'s Solutions
-   buildstring: 1.0.0.1.bs_release.2024.12.08
+  From: Yi's Solutions
+  buildstring: 1.0.0.1.yi_release.2025.1.7
 
-   $($lang.Instl)"
-	Write-host "   $('-' * 80)"
+  $($lang.Instl)"
+	write-host "  $('-' * 80)"
 }
 
 Function Refresh_Match
@@ -2447,8 +2476,8 @@ Function Refresh_Match
 
 	$Custom_Config = Get-Content -Path $Script:Init_Config | ConvertFrom-JSON
 	foreach ($item in $Custom_Config) {
-	    if ($item.App.App.Count -gt 0) {
-	        foreach ($itemApp in $item.App.app) {
+		if ($item.App.App.Count -gt 0) {
+			foreach ($itemApp in $item.App.app) {
 				if (($MatchApp -Contains $itemApp.Name) -or
 					($MatchApp -Contains $itemApp.GUID))
 				{
@@ -2470,27 +2499,13 @@ Function Refresh_Match
 	}
 }
 
+<#
+	.Set language pack, usage:
+	 Language                  | Language selected by the user
+	 Language -NewLang "zh-CN" | Mandatory use of specified language
+#>
 if ($Language) {
-	$IsMatch = $True
-	ForEach ($item in $AvailableLanguages) {
-		if ($item.Tag -eq $Language) {
-			$Global:lang = $item.Language
-			$Global:IsLang = $item.Tag
-			$IsMatch = $False
-			break
-		}
-	}
-
-	if ($IsMatch) {
-		ForEach ($item in $AvailableLanguages) {
-			if ($item.Tag -eq "en-US") {
-				$Global:lang = $item.Language
-				$Global:IsLang = $item.Tag
-				$IsMatch = $False
-				break
-			}
-		}
-	}
+	Language -NewLang $Language
 } else {
 	Language
 }
@@ -2498,7 +2513,7 @@ if ($Language) {
 <#
 	.初始化默认配置文件
 #>
-$Script:Init_Config = "$(Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue)\$($Global:IsLang)\latest.json"
+$Script:Init_Config = Join-Path -Path $(Convert-Path -Path $PSScriptRoot) -ChildPath "$($Global:IsLang)\latest.json"
 
 Get_Architecture
 Setting_Init_Disk_Free
@@ -2516,19 +2531,19 @@ Mainpage
 #>
 if ($App) {
 	ForEach ($item in $app) {
-		Write-host "   $($item)" -ForegroundColor Green
+		write-host "  $($item)" -ForegroundColor Green
 	}
 
 	if ($Config) {
-		Write-host "`n   $($lang.ConfigNot)" -ForegroundColor Yellow
-		Write-host "   $('-' * 80)"
-		Write-host "   $($config)" -ForegroundColor Yellow
+		write-host "`n  $($lang.ConfigNot)" -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "  $($config)" -ForegroundColor Yellow
 
 		if (Test-Path -Path $config -PathType leaf) {
 			$Script:Init_Config = $Config
-			Write-host "   $($lang.SetDefault)" -ForegroundColor Green
+			write-host "  $($lang.SetDefault)" -ForegroundColor Green
 		} else {
-			Write-host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			write-host "  $($lang.NoInstallImage)" -ForegroundColor Red
 			return
 		}
 	} else {
@@ -2547,12 +2562,12 @@ if ($App) {
 			.未指定配置文件，优先读取本地 Instl.json，如果没有就激活自动下载功能
 		#>
 		if (Test-Path -Path $Script:Init_Config -PathType leaf) {
-			Write-host "`n   $($lang.ConfigNot)" -ForegroundColor Yellow
-			Write-host "   $('-' * 80)"
-			Write-host "   $($Script:Init_Config)" -ForegroundColor Yellow
-			Write-host "   $($lang.SetDefault)" -ForegroundColor Green
+			write-host "`n  $($lang.ConfigNot)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
+			write-host "  $($Script:Init_Config)" -ForegroundColor Yellow
+			write-host "  $($lang.SetDefault)" -ForegroundColor Green
 		} else {
-			Write-host "`n   $($lang.NoInstallImage)"
+			write-host "`n  $($lang.NoInstallImage)"
 			return
 		}
 	}
@@ -2561,15 +2576,15 @@ if ($App) {
 	Install_Start_Process
 } else {
 	if ($Config) {
-		Write-host "`n   $($lang.ConfigNot)" -ForegroundColor Yellow
-		Write-host "   $('-' * 80)"
-		Write-host "   $($config)" -ForegroundColor Yellow
+		write-host "`n  $($lang.ConfigNot)" -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "  $($config)" -ForegroundColor Yellow
 
 		if (Test-Path -Path $config -PathType leaf) {
 			$Script:Init_Config = $Config
-			Write-host "   $($lang.SetDefault)" -ForegroundColor Green
+			write-host "  $($lang.SetDefault)" -ForegroundColor Green
 		} else {
-			Write-host "   $($lang.NoInstallImage)"
+			write-host "  $($lang.NoInstallImage)"
 			return
 		}
 	} else {
@@ -2577,10 +2592,10 @@ if ($App) {
 			.未指定配置文件，优先读取本地 Instl.json，如果没有就激活自动下载功能
 		#>
 		if (Test-Path -Path $Script:Init_Config -PathType leaf) {
-			Write-host "`n   $($lang.ConfigNot)" -ForegroundColor Yellow
-			Write-host "   $('-' * 80)"
-			Write-host "   $($Script:Init_Config)" -ForegroundColor Yellow
-			Write-host "   $($lang.SetDefault)" -ForegroundColor Green
+			write-host "`n  $($lang.ConfigNot)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
+			write-host "  $($Script:Init_Config)" -ForegroundColor Yellow
+			write-host "  $($lang.SetDefault)" -ForegroundColor Green
 		} else {
 			ForEach ($item in $Script:ServerListSelect | Sort-Object { Get-Random } ) {
 				$Script:ServerList += $item
