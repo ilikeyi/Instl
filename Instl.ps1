@@ -1,4 +1,22 @@
 ﻿<#
+	.Summary
+	 Yi's Solutions
+
+	.Open "Terminal" or "PowerShell ISE" as an administrator,
+	 set PowerShell execution policy: Bypass, PS >
+
+	 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
+
+	.Example
+	 PS C:\> .\Instl.ps1
+
+	.LINK
+	 https://fengyi.tel/solutions
+	 https://github.com/ilikeyi/Solutions
+
+	.About
+	 Author:  Yi
+	 Website: http://fengyi.tel
 
   PowerShell 安装软件
 
@@ -36,6 +54,7 @@
    -Config "D:\instl.json"     | 指定配置文件
    -App "Gpg4win", "Python"    | 从指定配置文件 instl.json 里获取应用程序，如果没有指定则自动从网站上下载配置文件
                                  可指定应用程序名、GUID 唯一识别符
+   -Silent                     | 静默安装
 
 #>
 
@@ -47,7 +66,8 @@ param
 (
 	$Language,
 	$Config,
-	[string[]]$App
+	[string[]]$App,
+	[switch]$Silent
 )
 
 <#
@@ -1357,7 +1377,7 @@ Function Archive
 	write-host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 	Write-Host $to -ForegroundColor Green
 
-	write-host "  $($lang.Unpacking)".PadRight(28) -NoNewlinee
+	write-host "  $($lang.Unpacking)".PadRight(28) -NoNewline
 
 	$Verify_Install_Path = Get_Zip -Run "7z.exe"
 	if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
@@ -1593,7 +1613,7 @@ Function Update_Setting_UI
 				ForEach ($item in $Script:ServerListSelect | Sort-Object { Get-Random } ) {
 					$Script:ServerList += $item
 				}
-
+			
 				Update_Process
 				$UI_Main.Close()
 			} else {
@@ -1604,7 +1624,7 @@ Function Update_Setting_UI
 						}
 					}
 				}
-
+			
 				if ($Script:ServerList.Count -gt 0) {
 					$UI_Main.Hide()
 					Update_Process
@@ -1803,6 +1823,66 @@ Function Install_UI
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
+
+function Instl_Save
+{
+	$Match_Wait_App = @()
+
+	<#
+		.获取用户是否选择了软件
+	#>
+	$Select_App.Controls | ForEach-Object {
+		if ($_ -is [System.Windows.Forms.CheckBox]) {
+			if ($_.Checked) {
+				$Match_Wait_App += $_.Tag
+			}
+		}
+	}
+
+	if ($Match_Wait_App.Count -gt 0) {
+	} else {
+		$UI_Main_Error.Text = $lang.ChoseSoftwareNot
+		return $False
+	}
+
+	<#
+		.从配置文件里获取软件匹配
+	#>
+	$Script:Install_App = @()
+	$Custom_Config = Get-Content -Path $Script:Init_Config | ConvertFrom-JSON
+	foreach ($item in $Custom_Config) {
+		if ($item.App.app.Count -gt 0) {
+			foreach ($itemApp in $item.App.app) {
+				if (($Match_Wait_App -Contains $itemApp.Name) -or
+					($Match_Wait_App -Contains $itemApp.GUID))
+				{
+					$Script:Install_App += @{
+						GUID      = $itemApp.GUID;
+						Name      = $itemApp.name;
+						Action    = $itemApp.Action;
+						Manner    = $itemApp.Manner;
+						DLetter   = $itemApp.DLetter;
+						Structure = $itemApp.Structure;
+						Unpwd     = $itemApp.Unpwd;
+						Url       = $itemApp.url;
+						FindFile  = $itemApp.FindFile;
+						param     = $itemApp.param
+					}
+				}
+			}
+		}
+	}
+
+	if ($Script:Install_App.Count -gt 0) {
+		$UI_Main.Hide()
+		Install_Start_Process
+		$UI_Main.Close()
+		return $True
+	} else {
+		$UI_Main_Error.Text = $lang.InstllUnavailable
+		return $False
+	}
+}
 
 	Function Setting_Init_Disk_To
 	{
@@ -2113,60 +2193,8 @@ Function Install_UI
 		Width          = 220
 		Text           = $lang.OK
 		add_Click      = {
-			$Match_Wait_App = @()
+			if (Instl_Save) {
 
-			<#
-				.获取用户是否选择了软件
-			#>
-			$Select_App.Controls | ForEach-Object {
-				if ($_ -is [System.Windows.Forms.CheckBox]) {
-					if ($_.Checked) {
-						$Match_Wait_App += $_.Tag
-					}
-				}
-			}
-
-			if ($Match_Wait_App.Count -gt 0) {
-			} else {
-				$UI_Main_Error.Text = $lang.ChoseSoftwareNot
-				return
-			}
-
-			<#
-				.从配置文件里获取软件匹配
-			#>
-			$Script:Install_App = @()
-			$Custom_Config = Get-Content -Path $Script:Init_Config | ConvertFrom-JSON
-			foreach ($item in $Custom_Config) {
-				if ($item.App.app.Count -gt 0) {
-					foreach ($itemApp in $item.App.app) {
-						if (($Match_Wait_App -Contains $itemApp.Name) -or
-							($Match_Wait_App -Contains $itemApp.GUID))
-						{
-							$Script:Install_App += @{
-								GUID      = $itemApp.GUID;
-								Name      = $itemApp.name;
-								Action    = $itemApp.Action;
-								Manner    = $itemApp.Manner;
-								DLetter   = $itemApp.DLetter;
-								Structure = $itemApp.Structure;
-								Unpwd     = $itemApp.Unpwd;
-								Url       = $itemApp.url;
-								FindFile  = $itemApp.FindFile;
-								param     = $itemApp.param
-							}
-						}
-					}
-				}
-			}
-
-			if ($Script:Install_App.Count -gt 0) {
-				$UI_Main.Hide()
-				Install_Start_Process
-				$UI_Main.Close()
-			} else {
-				$UI_Main_Error.Text = $lang.InstllUnavailable
-				return
 			}
 		}
 	}
@@ -2448,7 +2476,15 @@ Function Install_UI
 	})
 	$Select_App.ContextMenuStrip = $SelectMenu
 
-	$UI_Main.ShowDialog() | Out-Null
+	if ($Silent) {
+		if (Instl_Save) {
+
+		} else {
+			$UI_Main.ShowDialog() | Out-Null
+		}
+	} else {
+		$UI_Main.ShowDialog() | Out-Null
+	}
 }
 
 Function Mainpage
@@ -2459,7 +2495,7 @@ Function Mainpage
 	write-host "`n  Author: Yi ( https://fengyi.tel )
 
   From: Yi's Solutions
-  buildstring: 1.0.0.1.yi_release.2025.1.7
+  buildstring: 1.0.0.2.yi_release.2026.1.1
 
   $($lang.Instl)"
 	write-host "  $('-' * 80)"
