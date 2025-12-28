@@ -2,7 +2,7 @@
 	"Config": {
 		"Authon":  "Yi Feng",
 		"Website": "https://fengyi.tel",
-		"LatestTime": "11/11/2024",
+		"LatestTime": "1/1/2026",
 		"DefaultSelect": [
 			"5512e164-3969-488f-a48e-1dd24145c633",
 			"1da42d07-876c-4134-9b22-c2608634e8d8"
@@ -58,9 +58,9 @@
 					"Structure": "Installation package\\Compression software",
 					"Unpwd":     "",
 					"Url": {
-						"arm64": "https://www.7-zip.org/a/7z2408-arm64.exe",
-						"x64":   "https://www.7-zip.org/a/7z2408-x64.exe",
-						"x86":   "https://www.7-zip.org/a/7z2408.exe"
+						"arm64": "https://www.7-zip.org/a/7z2501-arm64.exe",
+						"x64":   "https://www.7-zip.org/a/7z2501-x64.exe",
+						"x86":   "https://www.7-zip.org/a/7z2501.exe"
 					},
 					"FindFile":  "7z*",
 					"param":     "/S"
@@ -75,8 +75,8 @@
 					"Unpwd":     "",
 					"Url": {
 						"arm64": "",
-						"x64":   "https://www.rarlab.com/rar/winrar-x64-700.exe",
-						"x86":   "https://www.rarlab.com/rar/winrar-x32-700.exe"
+						"x64":   "https://www.rarlab.com/rar/winrar-x64-713.exe",
+						"x86":   "https://www.rarlab.com/rar/winrar-x32-713.exe"
 					},
 					"FindFile":  "winrar*",
 					"param":     "/S"
@@ -95,9 +95,9 @@
 					"Structure": "Installation package\\Social application",
 					"Unpwd":     "",
 					"Url": {
-						"arm64": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.16_241112_arm64_01.exe",
-						"x64":   "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.16_241112_x64_01.exe",
-						"x86":   "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.16_241112_x86_01.exe"
+						"arm64": "https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.25_251203_arm64_01.exe",
+						"x64":   "https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.25_251203_x64_01.exe",
+						"x86":   "713https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.25_251203_x86_01.exe"
 					},
 					"FindFile":  "QQ*",
 					"param":     "/S"
@@ -113,7 +113,7 @@
 					"Url": {
 						"arm64": "",
 						"x64":   "",
-						"x86":   "https://dldir1.qq.com/weixin/Windows/WeChatSetup.exe"
+						"x86":   "https://dldir1v6.qq.com/weixin/Universal/Windows/WeChatWin_4.1.6.exe"
 					},
 					"FindFile":  "WeChat*",
 					"param":     "/S"
@@ -134,25 +134,9 @@
 					"Url": {
 						"arm64": "",
 						"x64":   "",
-						"x86":   "https://official-package.wpscdn.cn/wps/download/WPS_Setup_18608.exe"
+						"x86":   "https://official-package.wpscdn.cn/wps/download/WPS_Setup_24034.exe"
 					},
 					"FindFile":  "WPS_Setup*.exe",
-					"param":     "/S -agreelicense"
-				},
-				{
-					"GUID":      "4944a435-5a78-4416-a1ea-2f38a0dd942b",
-					"Name":      "WPS AI",
-					"Action":    "Install",
-					"Manner":    "Queue",
-					"DLetter":   "auto",
-					"Structure": "Installation package\\Office Software",
-					"Unpwd":     "",
-					"Url": {
-						"arm64": "",
-						"x64":   "",
-						"x86":   "https://pc-package.wpscdn.cn/wps/download/WPS_Setup_AI_18276.exe"
-					},
-					"FindFile":  "WPS_Setup_AI*.exe",
 					"param":     "/S -agreelicense"
 				}
 			]
@@ -208,7 +192,7 @@
 					"Url": {
 						"arm64": "",
 						"x64":   "",
-						"x86":   "https://dldir1v6.qq.com/music/clntupate/QQMusic_Setup_2045.exe"
+						"x86":   "https://dldir.y.qq.com/ecosfile/music_clntupate/pc/other/QQMusic_Setup_2201.exe"
 					},
 					"FindFile":  "QQMusic*",
 					"param":     "/S"
@@ -224,7 +208,7 @@
 					"Url": {
 						"arm64": "",
 						"x64":   "",
-						"x86":   "https://downmini.yun.kugou.com/web/kugou_release_11131.exe"
+						"x86":   "https://pcpackagebssdlbigapk.cosama.cn/202512290441/6501244ad6160fba4a4bc9d74c2a395f/web/kugou_release_20090.exe"
 					},
 					"FindFile":  "kugou*",
 					"param":     "/S"
@@ -239,8 +223,8 @@
 					"Unpwd":     "",
 					"Url": {
 						"arm64": "",
-						"x64":   "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_3.0.5.203184_64.exe",
-						"x86":   "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_2.10.13.202675_32.exe"
+						"x64":   "",
+						"x86":   "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_3.1.25.204860_64.exe"
 					},
 					"FindFile":  "NeteaseCloudMusic*",
 					"param":     "/S"
@@ -261,7 +245,7 @@
 					"Url": {
 						"arm64": "",
 						"x64":   "",
-						"x86":   "https://dldir1.qq.com/qqtv/TencentVideo11.105.4486.0.exe"
+						"x86":   "https://c755acd4090ed2b4cddc137685102a85.dlied1.cdntips.net/dldir1.qq.com/qqtv/TencentVideo11.149.2279.0.exe"
 					},
 					"FindFile":  "TencentVideo*",
 					"param":     "/S"
@@ -344,9 +328,9 @@
 					"Structure": "Installation package\\Develop software",
 					"Unpwd":     "",
 					"Url": {
-						"arm64": "https://www.python.org/ftp/python/3.13.0/python-3.13.0-arm64.exe",
-						"x64":   "https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe",
-						"x86":   "https://www.python.org/ftp/python/3.13.0/python-3.13.0.exe"
+						"arm64": "https://www.python.org/ftp/python/3.14.2/python-3.14.2-arm64.exe",
+						"x64":   "https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe",
+						"x86":   "https://www.python.org/ftp/python/3.14.2/python-3.14.2.exe"
 					},
 					"FindFile":  "python-*",
 					"param":     "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0"
@@ -368,7 +352,7 @@
 					"Url": {
 						"arm64": "",
 						"x64":   "",
-						"x86":   "https://down.sandai.net/thunder11/XunLeiWebSetup12.1.1.2636xl11.exe"
+						"x86":   "https://down.sandai.net/thunder11/XunLeiWebSetup12.4.7.3858xl11.exe"
 					},
 					"FindFile":  "XunLeiSetup12*",
 					"param":     "/S"
@@ -388,8 +372,8 @@
 					"Unpwd":     "",
 					"Url": {
 						"arm64": "",
-						"x64":   "https://github.com/abbodi1406/vcredist/releases/download/v0.85.0/VisualCppRedist_AIO_x86_x64.exe",
-						"x86":   "https://github.com/abbodi1406/vcredist/releases/download/v0.85.0/VisualCppRedist_AIO_x86only.exe"
+						"x64":   "https://github.com/abbodi1406/vcredist/releases/download/v0.103.0/VisualCppRedist_AIO_x86_x64.exe",
+						"x86":   "https://github.com/abbodi1406/vcredist/releases/download/v0.103.0/VisualCppRedist_AIO_x86only.exe"
 					},
 					"FindFile":  "VisualCppRedist*",
 					"param":     "/y"
