@@ -109,30 +109,6 @@ $Update_Server = @(
 			"https://github.com/ilikeyi/Instl/raw/main/update/zh-CN/latest.json"
 		)
 	}
-	@{
-		Region = "zh-TW"
-		Name   = "Chinese (Traditional, Taiwan)"
-		Link   = @(
-			"https://fengyi.tel/download/solutions/update/Instl/zh-TW/latest.json"
-			"https://github.com/ilikeyi/Instl/raw/main/update/zh-TW/latest.json"
-		)
-	}
-	@{
-		Region = "ja-JP"
-		Name   = "Japanese (Japan)"
-		Link   = @(
-			"https://fengyi.tel/download/solutions/update/Instl/ja-JP/latest.json"
-			"https://github.com/ilikeyi/Instl/raw/main/update/ja-JP/latest.json"
-		)
-	}
-	@{
-		Region = "ko-KR"
-		Name   = "Korean (Korea)"
-		Link   = @(
-			"https://fengyi.tel/download/solutions/update/Instl/ko-KR/latest.json"
-			"https://github.com/ilikeyi/Instl/raw/main/update/ko-KR/latest.json"
-		)
-	}
 )
 
 # 初始化自动选择磁盘最低大小：1GB
@@ -220,213 +196,8 @@ $AvailableLanguages = @(
 			VerifyConfig            = "Verifying correct configuration file"
 			UpdateFailedConfig      = "Download succeeded, but profile test failed, updated failed."
 			ConfigError             = "Configuration file error"
-		}
-	}
-	@{
-		Tag      = "de-DE"
-		Name     = "German (Germany)"
-		Language = @{
-			FontsUI                 = "Segoe UI"
-			Instl                   = "Software Installation"
-			Setting                 = "aufstellen"
-			Refresh                 = "erneuern"
-			OK                      = "Sicher"
-			AllSel                  = "Wählen Sie Alle"
-			AllClear                = "alles löschen"
-			Cancel                  = "Stornieren"
-			UpdateList              = "Aktualisierungsliste"
-			FailedCreateFolder      = "Verzeichnis konnte nicht erstellt werden"
-			Installing              = "Installieren"
-			Done                    = "Beenden"
-			ExistingPacker          = "Bereits installiertes Paket"
-			QucikRun                = "Schnelldurchlauf: "
-			WaitDone                = "Warten Sie auf den Abschluss: "
-			WaitQueue               = "in der Schlange warten"
-			AddQueue                = "Warteschlange hinzufügen: "
-			Parameter               = "Parameter: "
-			LocallyExist            = "Lokale Präsenz"
-			InstlNo                 = "Keine Installationsdateien gefunden, bitte überprüfen Sie die Integrität:"
-			OnlyUnzip               = "Nur entpacken"
-			StartDown               = "Starte Download"
-			DownloadFailed          = "Herunterladen fehlgeschlagen"
-			ConnectTo               = "Angeschlossen"
-			FileName                = "Dateiname"
-			SaveTo                  = "Speichern unter"
-			ItInstalled             = "Eingerichtet"
-			UpdateAvailable         = "Verfügbar"
-			UpdateUnavailable       = "Nicht verfügbar"
-			ExistingInstlPacker     = "Bereits komprimiert"
-			DownloadLinkError       = "Die Download-Adresse ist ungültig."
-			ErrorDown               = "Beim Download ist ein Fehler aufgetreten"
-			Unpacking               = "Auspacken"
-			ToQuit                  = "Verlassen Sie das Hauptmenü nach {0} Sekunden."
-			ChoseClass              = "Kategorie auswählen"
-			ChoseClassNo            = "Bitte wählen Sie zunächst eine Kategorie aus"
-			ChoseInstall            = "Wählen Sie die zu installierende Software aus"
-			ChoseSoftwareNot        = "Keine Software zum Herunterladen ausgewählt"
-			Instllsoftwareing       = "Software installieren"
-			InstllUnavailable       = "Kein Installationsprogramm verfügbar"
-			SelectAutoAvailable     = "Bei der automatischen Auswahl einer verfügbaren Festplatte"
-			SelectCheckAvailable    = "Überprüfen Sie den minimal verfügbaren freien Speicherplatz"
-			SettingDiskNewPath      = "Standardmäßig wird die Festplatte verwendet (zum Aktualisieren klicken Sie auf mich)"
-			SelectNoDisk            = "Datenträger standardmäßig verwenden ist nicht ausgewählt"
-			PreDownLink             = "Bevorzugte Download-Adresse"
-			SolutionsTipsArm64      = "Arm64-Pakete bevorzugen, in der Reihenfolge auswählen: x64, x86."
-			SolutionsTipsAMD64      = "Bevorzugen Sie x64-Pakete, wählen Sie in der Reihenfolge aus: x86."
-			SolutionsTipsX86        = "Fügen Sie nur x86-Pakete hinzu."
-			UpdateServerSelect      = "Automatische Serverauswahl oder benutzerdefinierte Auswahl"
-			SetDefault              = "als Standard einstellen"
-			AppNo                   = "keine Software verfügbar"
-			NoWork                  = "Nicht fragen"
-			NoInstallImage          = "existiert lokal nicht"
-			ConfigNot               = "Konfigurationsdatei: "
-			UpdateCheckServerStatus = "Serverstatus prüfen ( {0} optional )"
-			UpdateServerAddress     = "Serveradresse"
-			UpdatePriority          = "als Priorität festgelegt"
-			UpdateServerTestFailed  = "Serverstatustest fehlgeschlagen"
-			UpdateQueryingUpdate    = "Ich frage nach Updates..."
-			UpdateTimeUsed          = "Zeit genommen: "
-			VerifyConfig            = "Überprüfen der korrekten Konfigurationsdatei"
-			UpdateFailedConfig      = "Der Download war erfolgreich, aber der Profiltest ist fehlgeschlagen, die Aktualisierung ist fehlgeschlagen."
-			ConfigError             = "Fehler in der Konfigurationsdatei"
-		}
-	}
-	@{
-		Tag      = "ja-JP"
-		Name     = "Japanese (Japan)"
-		Language = @{
-			FontsUI                 = "Yu Gothic UI"
-			Instl                   = "ソフトウェアのインストール"
-			Setting                 = "設定"
-			Refresh                 = "リフレッシュする"
-			OK                      = "もちろん"
-			AllSel                  = "すべて選択"
-			AllClear                = "すべてクリア"
-			Cancel                  = "キャンセル"
-			UpdateList              = "更新リスト"
-			FailedCreateFolder      = "ディレクトリの作成に失敗しました"
-			Installing              = "インストール中"
-			Done                    = "終了"
-			ExistingPacker          = "すでにインストールされているパッケージ"
-			QucikRun                = "クイック実行: "
-			WaitDone                = "完了するまで待ちます: "
-			WaitQueue               = "列に並んで待っている"
-			AddQueue                = "キューを追加します: "
-			Parameter               = "パラメータ: "
-			LocallyExist            = "地元での存在感"
-			InstlNo                 = "インストール ファイルが見つかりません。整合性を確認してください: "
-			OnlyUnzip               = "解凍のみ"
-			StartDown               = "ダウンロード開始"
-			DownloadFailed          = "ダウンロードに失敗しました"
-			ConnectTo               = "に接続されています"
-			FileName                = "ファイル名"
-			SaveTo                  = "に保存"
-			ItInstalled             = "インストール済み"
-			UpdateAvailable         = "利用可能"
-			UpdateUnavailable       = "利用不可"
-			ExistingInstlPacker     = "すでに圧縮されています"
-			DownloadLinkError       = "ダウンロードアドレスが無効です。"
-			ErrorDown               = "ダウンロード中にエラーが発生しました"
-			Unpacking               = "開梱"
-			ToQuit                  = "{0} 秒後にメインメニューを終了します。"
-			ChoseClass              = "カテゴリを選択してください"
-			ChoseClassNo            = "最初にカテゴリを選択してください"
-			ChoseInstall            = "インストールするソフトウェアを選択します"
-			ChoseSoftwareNot        = "ダウンロードするソフトウェアが選択されていません"
-			Instllsoftwareing       = "ソフトウェアのインストール"
-			InstllUnavailable       = "利用可能なインストーラーがありません"
-			SelectAutoAvailable     = "使用可能なディスクを自動選択する場合"
-			SelectCheckAvailable    = "最小空き容量を確認する"
-			SettingDiskNewPath      = "ディスクはデフォルトで使用されます (クリックして更新してください)"
-			SelectNoDisk            = "デフォルトでディスクを使用するが選択されていない"
-			PreDownLink             = "優先ダウンロードアドレス"
-			SolutionsTipsArm64      = "arm64 パッケージを優先し、x64、x86 の順に選択します。"
-			SolutionsTipsAMD64      = "x64 パッケージを優先し、x86 の順に選択します。"
-			SolutionsTipsX86        = "x86 パッケージのみを追加します。"
-			UpdateServerSelect      = "自動サーバー選択またはカスタム選択"
-			SetDefault              = "デフォルトとして設定"
-			AppNo                   = "利用可能なソフトウェアがありません"
-			NoWork                  = "タスクがありません"
-			NoInstallImage          = "ローカルに存在しません"
-			ConfigNot               = "設定ファイル: "
-			UpdateCheckServerStatus = "サーバーのステータスを確認する ( 合計 {0} 個はオプションです )"
-			UpdateServerAddress     = "サーバーアドレス"
-			UpdatePriority          = "優先として設定"
-			UpdateServerTestFailed  = "サーバーステータステストの失敗"
-			UpdateQueryingUpdate    = "更新を問い合わせています..."
-			UpdateTimeUsed          = "所要時間: "
-			VerifyConfig            = "構成ファイルが正しいことを確認する"
-			UpdateFailedConfig      = "ダウンロードは成功しましたが、プロファイルのテストは失敗し、更新は失敗しました。"
-			ConfigError             = "設定ファイルエラー"
-		}
-	}
-	@{
-		Tag      = "ko-KR"
-		Name     = "Korean (Korea)"
-		Language = @{
-			FontsUI                 = "Malgun Gothic"
-			Instl                   = "소프트웨어 설치"
-			Setting                 = "설정"
-			Refresh                 = "새로 고침"
-			OK                      = "확신하는"
-			AllSel                  = "모두 선택"
-			AllClear                = "모두 지우기"
-			Cancel                  = "취소"
-			UpdateList              = "업데이트 목록"
-			FailedCreateFolder      = "디렉터리를 만들지 못했습니다"
-			Installing              = "설치 중"
-			Done                    = "마치다"
-			ExistingPacker          = "이미 설치된 패키지"
-			QucikRun                = "빠른 실행: "
-			WaitDone                = "완료될 때까지 기다리십시오: "
-			WaitQueue               = "대기열에서 대기 중"
-			AddQueue                = "대기열 추가: "
-			Parameter               = "매개변수: "
-			LocallyExist            = "현지 존재"
-			InstlNo                 = "설치 파일을 찾을 수 없습니다. 무결성을 확인하십시오."
-			OnlyUnzip               = "압축을 풀기만"
-			StartDown               = "다운로드를 시작하다"
-			DownloadFailed          = "다운로드 실패"
-			ConnectTo               = "연결 대상"
-			FileName                = "파일"
-			SaveTo                  = "저장 위치"
-			ItInstalled             = "설치됨"
-			UpdateAvailable         = "가능"
-			UpdateUnavailable       = "사용할 수 없음"
-			ExistingInstlPacker     = "이미 압축됨"
-			DownloadLinkError       = "다운로드 주소가 잘못되었습니다."
-			ErrorDown               = "다운로드 중 오류가 발생했습니다."
-			Unpacking               = "포장 풀기"
-			ToQuit                  = "{0} 초 후에 기본 메뉴를 종료합니다."
-			ChoseClass              = "카테고리 선택"
-			ChoseClassNo            = "카테고리를 먼저 선택해주세요"
-			ChoseInstall            = "설치할 소프트웨어 선택"
-			ChoseSoftwareNot        = "다운로드할 소프트웨어를 선택하지 않았습니다."
-			Instllsoftwareing       = "소프트웨어 설치"
-			InstllUnavailable       = "사용 가능한 설치 프로그램 없음"
-			SelectAutoAvailable     = "사용 가능한 디스크를 자동으로 선택하는 경우"
-			SelectCheckAvailable    = "사용 가능한 최소 여유 공간 확인"
-			SettingDiskNewPath      = "기본적으로 디스크가 사용됨 ( 새로고치려면 클릭 )"
-			SelectNoDisk            = "기본적으로 디스크 사용이 선택되지 않았습니다."
-			PreDownLink             = "선호하는 다운로드 주소"
-			SolutionsTipsArm64      = "arm64 패키지를 선호하고 x64, x86 순으로 선택하십시오."
-			SolutionsTipsAMD64      = "x64 패키지 선호, 순서대로 선택: x86."
-			SolutionsTipsX86        = "x86 패키지만 추가하십시오."
-			UpdateServerSelect      = "자동 서버 선택 또는 사용자 지정 선택"
-			SetDefault              = "기본값으로 설정"
-			AppNo                   = "사용 가능한 소프트웨어 없음"
-			NoWork                  = "묻지 않는다"
-			NoInstallImage          = "로컬에 존재하지 않음"
-			ConfigNot               = "구성 파일: "
-			UpdateCheckServerStatus = "서버 상태 확인 ( {0} 선택 사항 )"
-			UpdateServerAddress     = "서버 주소"
-			UpdatePriority          = "우선 순위로 설정"
-			UpdateServerTestFailed  = "실패한 서버 상태 테스트"
-			UpdateQueryingUpdate    = "업데이트 쿼리 중..."
-			UpdateTimeUsed          = "걸린 시간: "
-			VerifyConfig            = "올바른 구성 파일 확인"
-			UpdateFailedConfig      = "다운로드에 성공했지만 프로필 테스트에 실패하고 업데이트에 실패했습니다."
-			ConfigError             = "구성 파일 오류"
+			PSFunction              = "PowerShell Function"
+			Command                 = "Custom command line"
 		}
 	}
 	@{
@@ -496,75 +267,8 @@ $AvailableLanguages = @(
 			VerifyConfig            = "正在验证正确的配置文件"
 			UpdateFailedConfig      = "下载成功，但配置文件测试失败，已更新失败。"
 			ConfigError             = "配置文件错误"
-		}
-	}
-	@{
-		Tag      = "zh-TW"
-		Name     = "Chinese (Traditional, Taiwan)"
-		Language = @{
-			FontsUI                 = "Microsoft JhengHei UI"
-			Instl                   = "軟件安裝"
-			Setting                 = "設置"
-			Refresh                 = "刷新"
-			OK                      = "確定"
-			AllSel                  = "選擇所有"
-			AllClear                = "清除所有"
-			Cancel                  = "取消"
-			UpdateList              = "更新列表"
-			FailedCreateFolder      = "創建目錄失敗"
-			Installing              = "正在安裝"
-			Done                    = "完成"
-			ExistingPacker          = "已有安裝包"
-			QucikRun                = "快速運行："
-			WaitDone                = "等待完成："
-			WaitQueue               = "正在等待隊列"
-			AddQueue                = "添加隊列："
-			Parameter               = "參數："
-			LocallyExist            = "本地存在"
-			InstlNo                 = "未發現安裝文件，請檢查完整性："
-			OnlyUnzip               = "僅解壓"
-			StartDown               = "開始下載"
-			DownloadFailed          = "下載失敗"
-			ConnectTo               = "連接到"
-			FileName                = "檔案名稱"
-			SaveTo                  = "保存到"
-			ItInstalled             = "已安裝"
-			UpdateAvailable         = "可用"
-			UpdateUnavailable       = "不可用"
-			ExistingInstlPacker     = "已有壓縮包"
-			DownloadLinkError       = "下載地址無效。"
-			ErrorDown               = "下載過程中出現錯誤"
-			Unpacking               = "解壓中"
-			ToQuit                  = "{0} 秒後退出主菜單。"
-			ChoseClass              = "選擇分類"
-			ChoseClassNo            = "請先選擇分類"
-			ChoseInstall            = "選擇待安裝的軟件"
-			ChoseSoftwareNot        = "未選擇待下載的軟件"
-			Instllsoftwareing       = "正在安裝軟件中"
-			InstllUnavailable       = "沒有可用的安裝軟件"
-			SelectAutoAvailable     = "自動選擇可用磁盤時"
-			SelectCheckAvailable    = "檢查最低可用剩餘空間"
-			SettingDiskNewPath      = "默認使用磁盤 ( 點我刷新 )"
-			SelectNoDisk            = "未選擇默認使用磁盤"
-			PreDownLink             = "首選下載地址"
-			SolutionsTipsArm64      = "首選 arm64 軟件包，依次按順序選擇：x64、x86。"
-			SolutionsTipsAMD64      = "首選 x64 軟件包，依次按順序選擇：x86。"
-			SolutionsTipsX86        = "僅添加 x86 軟件包。"
-			UpdateServerSelect      = "自動選擇服務器或自定義選擇"
-			SetDefault              = "已設置為默認"
-			AppNo                   = "無可用軟件"
-			NoWork                  = "無任務"
-			NoInstallImage          = "本地不存在"
-			ConfigNot               = "配置文件："
-			UpdateCheckServerStatus = "檢查服務器狀態 ( 共 {0} 個可選 )"
-			UpdateServerAddress     = "服务器地址"
-			UpdatePriority          = "已設置為優先級"
-			UpdateServerTestFailed  = "未通過服務器狀態測試"
-			UpdateQueryingUpdate    = "正在查詢更新中..."
-			UpdateTimeUsed          = "所用的時間："
-			VerifyConfig            = "正在驗證正確的配置文件"
-			UpdateFailedConfig      = "下載成功，但配置文件測試失敗，已更新失敗。"
-			ConfigError             = "配置文件錯誤"
+			PSFunction              = "PowerShell 函数"
+			Command                 = "自定义命令行"
 		}
 	}
 )
@@ -852,7 +556,7 @@ Function Test_Available_Disk
 	try {
 		New-Item -Path $Path -ItemType Directory -ErrorAction SilentlyContinue | Out-Null
 
-		$RandomGuid = [guid]::NewGuid()
+		$RandomGuid = New-Guid
 		$test_tmp_filename = "writetest-$($RandomGuid)"
 		$test_filename = Join-Path -Path $Path -ChildPath $test_tmp_filename -ErrorAction SilentlyContinue
 
@@ -985,7 +689,9 @@ Function Install_Process
 		$urlAMD64,
 		$urlarm64,
 		$filename,
-		$param
+		$param,
+		$NewPS,
+		$NewCmd
 	)
 
 	write-host "  $($lang.Installing) - $($appname)" -ForegroundColor Green
@@ -1120,7 +826,7 @@ Function Install_Process
 						Write-Host $_.fullname -ForegroundColor Green
 						Write-Host
 
-						Open_Apps -filename $_.fullname -param $param -mode $mode
+						Open_Apps -filename $_.fullname -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($filename)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
@@ -1128,7 +834,7 @@ Function Install_Process
 						Write-Host $_.fullname -ForegroundColor Green
 						Write-Host
 
-						Open_Apps -filename $_.fullname -param $param -mode $mode
+						Open_Apps -filename $_.fullname -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($packer)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
@@ -1136,7 +842,7 @@ Function Install_Process
 						Write-Host $_.fullname -ForegroundColor Green
 						Write-Host
 
-						Open_Apps -filename $_.fullname -param $param -mode $mode
+						Open_Apps -filename $_.fullname -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 						break
 					}
 					if (Test-Path $OutAny) {
@@ -1173,7 +879,7 @@ Function Install_Process
 						write-host "     $($_.fullname)" -ForegroundColor Green
 						Write-Host
 
-						Open_Apps -filename $_.fullname -param $param -mode $mode
+						Open_Apps -filename $_.fullname -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($filename)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
@@ -1181,7 +887,7 @@ Function Install_Process
 						write-host "     $($_.fullname)" -ForegroundColor Green
 						Write-Host
 
-						Open_Apps -filename $_.fullname -param $param -mode $mode
+						Open_Apps -filename $_.fullname -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 						break
 					}
 					Get-ChildItem -Path $OutTo -Filter "*$($packer)*.exe" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object {
@@ -1189,7 +895,7 @@ Function Install_Process
 						write-host "     $($_.fullname)" -ForegroundColor Green
 						Write-Host
 
-						Open_Apps -filename $_.fullname -param $param -mode $mode
+						Open_Apps -filename $_.fullname -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 						break
 					}
 				}
@@ -1280,7 +986,7 @@ Function Install_Process
 		}
 		default {
 			if (Test-Path $OutAny -PathType Leaf) {
-				Open_Apps -filename $OutAny -param $param -mode $mode
+				Open_Apps -filename $OutAny -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 			} else {
 				write-host "   * $($lang.StartDown)"
 				if ([string]::IsNullOrEmpty($url)) {
@@ -1296,7 +1002,7 @@ Function Install_Process
 
 						Check_Folder -chkpath $OutTo
 						Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
-						Open_Apps -filename $OutAny -param $param -mode $mode
+						Open_Apps -filename $OutAny -param $param -mode $mode -NewPS $NewPS -NewCmd $NewCmd
 					} else {
 						write-host "     - $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 					}
@@ -1428,6 +1134,35 @@ Function Wait_Process_End
 					Start-Sleep -s 2
 				} else {
 					Write-Host $lang.Done -ForegroundColor Yellow
+
+					write-host "`n     $($lang.PSFunction)" -ForegroundColor Yellow
+					write-host "     $('-' * 76)"
+					if ($item.PS.Count -gt 0) {
+						$SNTasks = 0
+						foreach ($itemPS in $item.PS) {
+							$SNTasks++
+							write-host "     $($SNTasks)/$($item.PS.Count) $($itemPS)" -ForegroundColor Green
+							Invoke-Expression -Command $itemPS
+							write-host "     $($SNTasks)/$($item.Cmd.Count) $($itemPS) < $($lang.Done)`n" -ForegroundColor Green
+						}
+					} else {
+						write-host "     $($lang.NoWork)" -ForegroundColor Red
+					}
+
+					write-host
+					write-host "     $($lang.Command)" -ForegroundColor Yellow
+					write-host "     $('-' * 76)"
+					if ($item.Cmd.Count -gt 0) {
+						$SNTasks = 0
+						foreach ($itemCmd in $item.Cmd) {
+							$SNTasks++
+							write-host "     $($SNTasks)/$($item.Cmd.Count) $($itemCmd)" -ForegroundColor Green
+							Invoke-Expression $itemCmd
+							write-host "     $($SNTasks)/$($item.Cmd.Count) $($itemCmd) < $($lang.Done)`n" -ForegroundColor Green
+						}
+					} else {
+						write-host "     $($lang.NoWork)" -ForegroundColor Red
+					}
 					break
 				}
 			}
@@ -1445,12 +1180,14 @@ Function Open_Apps
 	(
 		$filename,
 		$param,
-		$mode
+		$mode,
+		$NewPS,
+		$NewCmd
 	)
 
 	if (Test-Path $filename -PathType Leaf) {
 		Switch ($mode) {
-			Fast {
+			"Fast" {
 				if ([string]::IsNullOrEmpty($param)) {
 					write-host "   - $($lang.QucikRun)" -ForegroundColor Yellow
 					write-host "     $($filename)`n" -ForegroundColor Green
@@ -1466,7 +1203,7 @@ Function Open_Apps
 					Start-Process -FilePath $filename -ArgumentList $param
 				}
 			}
-			Wait {
+			"Wait" {
 				if ([string]::IsNullOrEmpty($param)) {
 					write-host "   - $($lang.WaitDone)" -ForegroundColor Yellow
 					write-host "     $($filename)`n" -ForegroundColor Green
@@ -1481,7 +1218,7 @@ Function Open_Apps
 					Start-Process -FilePath $filename -ArgumentList $param -Wait
 				}
 			}
-			Queue {
+			"Queue" {
 				write-host "   - $($lang.QucikRun)" -ForegroundColor Yellow
 				write-host "     $($filename)" -ForegroundColor Green
 
@@ -1489,7 +1226,9 @@ Function Open_Apps
 					$AppRunQueue = Start-Process -FilePath $filename -passthru
 					$Script:AppQueue += @{
 						ID   = $AppRunQueue.Id;
-						PATH = $filename
+						PATH = $filename;
+						PS   = $NewPS;
+						Cmd  = $NewCmd
 					}
 
 					write-host "   - $($lang.AddQueue)" -NoNewline -ForegroundColor Yellow
@@ -1500,13 +1239,33 @@ Function Open_Apps
 					$AppRunQueue = Start-Process -FilePath $filename -ArgumentList $param -passthru
 					$Script:AppQueue += @{
 						ID   = $AppRunQueue.Id;
-						PATH = $filename
+						PATH = $filename;
+						PS   = $NewPS;
+						Cmd  = $NewCmd
 					}
 
 					write-host "`n  - $($lang.Parameter)" -ForegroundColor Yellow
-					write-host "     $($param)" -ForegroundColor Green
+					write-host "    $($param)" -ForegroundColor Green
 
-					write-host "   - $($lang.AddQueue)" -NoNewline -ForegroundColor Yellow
+					write-host "`n  - $($lang.PSFunction)" -ForegroundColor Yellow
+					if ($NewPS.Count -gt 0) {
+						foreach ($psitem in $NewPS) {
+							write-host "    $($psitem)" -ForegroundColor Green
+						}
+					} else {
+						write-host "    $($lang.NoWork)" -ForegroundColor Red
+					}
+
+					write-host "`n  - $($lang.Command)" -ForegroundColor Yellow
+					if ($NewCmd.Count -gt 0) {
+						foreach ($cmditem in $NewCmd) {
+							write-host "    $($cmditem)" -ForegroundColor Green
+						}
+					} else {
+						write-host "    $($lang.NoWork)" -ForegroundColor Red
+					}
+
+					write-host "`n  - $($lang.AddQueue)" -NoNewline -ForegroundColor Yellow
 					Write-Host $AppRunQueue.Id -ForegroundColor Green
 
 					Write-Host
@@ -1536,7 +1295,7 @@ Function Install_Start_Process
 	write-host "  $('-' * 80)"
 	if ($Script:Install_App.Count -gt 0) {
 		foreach ($item in $Script:Install_App) {
-			Install_Process -appname $item.Name -act $item.Action -mode $item.Manner -todisk $item.DLetter -structure $item.Structure -pwd $item.Unpwd -url $item.url.x86 -urlAMD64 $item.url.x64 -urlarm64 $item.url.arm64 -filename $item.FindFile -param $item.param
+			Install_Process -appname $item.Name -act $item.Action -mode $item.Manner -todisk $item.DLetter -structure $item.Structure -pwd $item.Unpwd -url $item.url.x86 -urlAMD64 $item.url.x64 -urlarm64 $item.url.arm64 -filename $item.FindFile -param $item.param -NewPS $item.PS -NewCmd $item.Command
 		}
 
 		Wait_Process_End
@@ -1751,7 +1510,7 @@ Function Update_Process
 
 		write-host "`n  $($lang.UpdateQueryingUpdate)"
 
-		$RandomGuid = [guid]::NewGuid()
+		$RandomGuid = New-Guid
 		$output = "$(Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue)\$($RandomGuid).json"
 
 		New-Item -Path "$(Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue)\$($Global:IsLang)" -ItemType Directory -ErrorAction SilentlyContinue | Out-Null
@@ -1824,65 +1583,67 @@ Function Install_UI
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
-function Instl_Save
-{
-	$Match_Wait_App = @()
+	function Instl_Save
+	{
+		$Match_Wait_App = @()
 
-	<#
-		.获取用户是否选择了软件
-	#>
-	$Select_App.Controls | ForEach-Object {
-		if ($_ -is [System.Windows.Forms.CheckBox]) {
-			if ($_.Checked) {
-				$Match_Wait_App += $_.Tag
+		<#
+			.获取用户是否选择了软件
+		#>
+		$Select_App.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($_.Checked) {
+					$Match_Wait_App += $_.Tag
+				}
 			}
 		}
-	}
 
-	if ($Match_Wait_App.Count -gt 0) {
-	} else {
-		$UI_Main_Error.Text = $lang.ChoseSoftwareNot
-		return $False
-	}
+		if ($Match_Wait_App.Count -gt 0) {
+		} else {
+			$UI_Main_Error.Text = $lang.ChoseSoftwareNot
+			return $False
+		}
 
-	<#
-		.从配置文件里获取软件匹配
-	#>
-	$Script:Install_App = @()
-	$Custom_Config = Get-Content -Path $Script:Init_Config | ConvertFrom-JSON
-	foreach ($item in $Custom_Config) {
-		if ($item.App.app.Count -gt 0) {
-			foreach ($itemApp in $item.App.app) {
-				if (($Match_Wait_App -Contains $itemApp.Name) -or
-					($Match_Wait_App -Contains $itemApp.GUID))
-				{
-					$Script:Install_App += @{
-						GUID      = $itemApp.GUID;
-						Name      = $itemApp.name;
-						Action    = $itemApp.Action;
-						Manner    = $itemApp.Manner;
-						DLetter   = $itemApp.DLetter;
-						Structure = $itemApp.Structure;
-						Unpwd     = $itemApp.Unpwd;
-						Url       = $itemApp.url;
-						FindFile  = $itemApp.FindFile;
-						param     = $itemApp.param
+		<#
+			.从配置文件里获取软件匹配
+		#>
+		$Script:Install_App = @()
+		$Custom_Config = Get-Content -Path $Script:Init_Config | ConvertFrom-JSON
+		foreach ($item in $Custom_Config) {
+			if ($item.App.app.Count -gt 0) {
+				foreach ($itemApp in $item.App.app) {
+					if (($Match_Wait_App -Contains $itemApp.Name) -or
+						($Match_Wait_App -Contains $itemApp.GUID))
+					{
+						$Script:Install_App += @{
+							GUID      = $itemApp.GUID;
+							Name      = $itemApp.name;
+							Action    = $itemApp.Action;
+							Manner    = $itemApp.Manner;
+							DLetter   = $itemApp.DLetter;
+							Structure = $itemApp.Structure;
+							Unpwd     = $itemApp.Unpwd;
+							Url       = $itemApp.url;
+							FindFile  = $itemApp.FindFile;
+							param     = $itemApp.param;
+							PS        = $itemApp.PS;
+							Command   = $itemApp.Command
+						}
 					}
 				}
 			}
 		}
-	}
 
-	if ($Script:Install_App.Count -gt 0) {
-		$UI_Main.Hide()
-		Install_Start_Process
-		$UI_Main.Close()
-		return $True
-	} else {
-		$UI_Main_Error.Text = $lang.InstllUnavailable
-		return $False
+		if ($Script:Install_App.Count -gt 0) {
+			$UI_Main.Hide()
+			Install_Start_Process
+			$UI_Main.Close()
+			return $True
+		} else {
+			$UI_Main_Error.Text = $lang.InstllUnavailable
+			return $False
+		}
 	}
-}
 
 	Function Setting_Init_Disk_To
 	{
@@ -2487,6 +2248,79 @@ function Instl_Save
 	}
 }
 
+<#
+	.自定义 PowerShell 函数功能，对接 配置文件
+#>
+Function Set_WiFi
+{
+	param(
+		[string]$SSID,
+		[string]$PSK
+	)
+
+	Get-Service -Name WlanSvc | Start-Service
+	Write-Output "WiFi Profile Setup"
+	Write-Output "WLANSvc Status"
+	Get-Service -Name WlanSvc
+	$WirelessAdapters = Get-NetAdapter | Where-Object {($_.PhysicalMediaType -eq 'Native 802.11') -or ($_.PhysicalMediaType -eq 'Wireless LAN')}
+	Write-Output "Wireless Adapters: $($WirelessAdapters.InterfaceDescription)"
+	Write-Output ""
+
+	if ($WirelessAdapters){
+		Write-Output "Setting WiFi Profile"
+		Set_WiFi_User_profiles -SSID $SSID -PSK $PSK
+	} else {
+		Write-Output "NO WiFi Adapters Found to set"
+	}
+}
+
+Function Set_WiFi_User_profiles
+{
+	param(
+		[string]$SSID,
+		[string]$PSK
+	)
+
+	$guid = New-Guid
+	$HexArray = $ssid.ToCharArray() | foreach-object { [System.String]::Format("{0:X}", [System.Convert]::ToUInt32($_)) }
+	$HexSSID = $HexArray -join ""
+@"
+<?xml version="1.0"?>
+<WLANProfile xmlns="http://www.microsoft.com/networking/WLAN/profile/v1">
+	<name>$($SSID)</name>
+	<SSIDConfig>
+		<SSID>
+			<hex>$($HexSSID)</hex>
+			<name>$($SSID)</name>
+		</SSID>
+	</SSIDConfig>
+	<connectionType>ESS</connectionType>
+	<connectionMode>auto</connectionMode>
+	<MSM>
+		<security>
+			<authEncryption>
+				<authentication>WPA2PSK</authentication>
+				<encryption>AES</encryption>
+				<useOneX>false</useOneX>
+			</authEncryption>
+			<sharedKey>
+				<keyType>passPhrase</keyType>
+				<protected>false</protected>
+				<keyMaterial>$($PSK)</keyMaterial>
+			</sharedKey>
+		</security>
+	</MSM>
+	<MacRandomization xmlns="http://www.microsoft.com/networking/WLAN/profile/v3">
+		<enableRandomization>false</enableRandomization>
+		<randomizationSeed>1451755948</randomizationSeed>
+	</MacRandomization>
+</WLANProfile>
+"@ | out-file "$($ENV:TEMP)\$guid.SSID"
+
+	netsh wlan add profile filename="$($ENV:TEMP)\$guid.SSID" user=all
+	remove-item "$($ENV:TEMP)\$guid.SSID" -Force
+}
+
 Function Mainpage
 {
 	Clear-Host
@@ -2527,7 +2361,9 @@ Function Refresh_Match
 						Unpwd     = $itemApp.Unpwd;
 						Url       = $itemApp.url;
 						FindFile  = $itemApp.FindFile;
-						param     = $itemApp.param
+						param     = $itemApp.param;
+						PS        = $itemApp.PS;
+						Command   = $itemApp.Command
 					}
 				}
 			}
