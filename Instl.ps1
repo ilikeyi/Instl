@@ -1143,7 +1143,7 @@ Function Wait_Process_End
 							$SNTasks++
 							write-host "     $($SNTasks)/$($item.PS.Count) $($itemPS)" -ForegroundColor Green
 							Invoke-Expression -Command $itemPS
-							write-host "     $($SNTasks)/$($item.Cmd.Count) $($itemPS) < $($lang.Done)`n" -ForegroundColor Green
+							write-host "     $($SNTasks)/$($item.PS.Count) $($itemPS) < $($lang.Done)`n" -ForegroundColor Green
 						}
 					} else {
 						write-host "     $($lang.NoWork)" -ForegroundColor Red
@@ -1202,6 +1202,34 @@ Function Open_Apps
 
 					Start-Process -FilePath $filename -ArgumentList $param
 				}
+
+				write-host "`n  - $($lang.PSFunction)" -ForegroundColor Yellow
+				if ($NewPS.Count -gt 0) {
+					$SNTasks = 0
+					foreach ($itemPS in $NewPS) {
+						$SNTasks++
+						write-host "     $($SNTasks)/$($NewPS.Count) $($itemPS)" -ForegroundColor Green
+						Invoke-Expression -Command $itemPS
+						write-host "     $($SNTasks)/$($NewPS.Count) $($itemPS) < $($lang.Done)`n" -ForegroundColor Green
+					}
+				} else {
+					write-host "     $($lang.NoWork)" -ForegroundColor Red
+				}
+
+				write-host
+				write-host "     $($lang.Command)" -ForegroundColor Yellow
+				write-host "     $('-' * 76)"
+				if ($NewCmd.Count -gt 0) {
+					$SNTasks = 0
+					foreach ($itemCmd in $NewCmd) {
+						$SNTasks++
+						write-host "     $($SNTasks)/$($NewCmd.Count) $($itemCmd)" -ForegroundColor Green
+						Invoke-Expression $itemCmd
+						write-host "     $($SNTasks)/$($NewCmd.Count) $($itemCmd) < $($lang.Done)`n" -ForegroundColor Green
+					}
+				} else {
+					write-host "     $($lang.NoWork)" -ForegroundColor Red
+				}
 			}
 			"Wait" {
 				if ([string]::IsNullOrEmpty($param)) {
@@ -1216,6 +1244,35 @@ Function Open_Apps
 					write-host "     $($param)`n" -ForegroundColor Green
 
 					Start-Process -FilePath $filename -ArgumentList $param -Wait
+				}
+
+
+				write-host "`n  - $($lang.PSFunction)" -ForegroundColor Yellow
+				if ($NewPS.Count -gt 0) {
+					$SNTasks = 0
+					foreach ($itemPS in $NewPS) {
+						$SNTasks++
+						write-host "     $($SNTasks)/$($NewPS.Count) $($itemPS)" -ForegroundColor Green
+						Invoke-Expression -Command $itemPS
+						write-host "     $($SNTasks)/$($NewPS.Count) $($itemPS) < $($lang.Done)`n" -ForegroundColor Green
+					}
+				} else {
+					write-host "     $($lang.NoWork)" -ForegroundColor Red
+				}
+
+				write-host
+				write-host "     $($lang.Command)" -ForegroundColor Yellow
+				write-host "     $('-' * 76)"
+				if ($NewCmd.Count -gt 0) {
+					$SNTasks = 0
+					foreach ($itemCmd in $NewCmd) {
+						$SNTasks++
+						write-host "     $($SNTasks)/$($NewCmd.Count) $($itemCmd)" -ForegroundColor Green
+						Invoke-Expression $itemCmd
+						write-host "     $($SNTasks)/$($NewCmd.Count) $($itemCmd) < $($lang.Done)`n" -ForegroundColor Green
+					}
+				} else {
+					write-host "     $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 			"Queue" {
@@ -2315,10 +2372,10 @@ Function Set_WiFi_User_profiles
 		<randomizationSeed>1451755948</randomizationSeed>
 	</MacRandomization>
 </WLANProfile>
-"@ | out-file "$($ENV:TEMP)\$guid.SSID"
+"@ | out-file "$($ENV:TEMP)\$($guid).SSID"
 
-	netsh wlan add profile filename="$($ENV:TEMP)\$guid.SSID" user=all
-	remove-item "$($ENV:TEMP)\$guid.SSID" -Force
+	netsh wlan add profile filename="$($ENV:TEMP)\$($guid).SSID" user=all
+	remove-item "$($ENV:TEMP)\$($guid).SSID" -Force
 }
 
 Function Mainpage
@@ -2329,7 +2386,7 @@ Function Mainpage
 	write-host "`n  Author: Yi ( https://fengyi.tel )
 
   From: Yi's Solutions
-  buildstring: 1.0.0.2.yi_release.2026.1.1
+  buildstring: 1.0.1.0.yi_release.2026.1.26
 
   $($lang.Instl)"
 	write-host "  $('-' * 80)"
